@@ -90,14 +90,14 @@ def highest_common_factor(a,b):
 # def get_minimum(list):
 #     return min(list)
 
-def get_minimum(list):
+def get_minimum(data):
 
-    if not list:
+    if not data:
         return None
     
-    small = list[0]
+    small = data[0]
 
-    for n in list:
+    for n in data:
         if n < small:
             small = n
     
@@ -105,7 +105,7 @@ def get_minimum(list):
 
 
 # Test Cases for F5
-# print(get_minimum([3, 1, 4, 1, 5, 9, 2, 6]))
+print(get_minimum([3, 1, 4, 11, 5, 9, 2, 6, -1]))
 
 # F6
 # accepts three arguments, a dataframe, old column name and the new column name. In the function, update the column name from old to the new and return the modified dataframe
@@ -132,6 +132,4 @@ def correlation_sum(a):
 
     return round(df.corr().values.sum(), 1)
 
-print(correlation_sum("1 2 3 4 5 6 7 8 9"))
-print(correlation_sum("1 2 3 4 5 6"))
-print(correlation_sum("1 2 3 45 5 6 7 10 9"))
+# print(correlation_sum("1 2 3 4 5 6 7 8 9"))
