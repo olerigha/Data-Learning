@@ -7,5 +7,12 @@
             "envManager": "ms-python.python:conda",
             "packageManager": "ms-python.python:conda"
         }
-    ]
+    ],
+    "terminal.integrated.profiles.windows": {
+        "Miniforge Prompt": {
+            "path": "C:\\WINDOWS\\System32\\cmd.exe",
+            "args": ["/k", "C:\\Users\\Obaro\\miniforge3\\Scripts\\activate.bat"]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Miniforge Prompt"
 }
