@@ -1,0 +1,56 @@
+# ==============================================================================
+# Cloud Data Engineering - Course Dependencies
+# Supported Environment: Python 3.12+
+# ==============================================================================
+
+# --- Core Ingestion, Transformation & Pipelines (Weeks 1 & 5) ---
+beautifulsoup4>=4.12
+httpx>=0.27
+nbformat>=5.10
+openpyxl>=3.1
+pandas>=2.2
+prefect>=3.0
+pyarrow>=17.0
+PyYAML>=6.0
+requests>=2.31
+xlrd>=2.0
+
+# --- Cloud SDKs & Storage (Week 2 & Capstone) ---
+boto3>=1.34
+google-cloud-storage>=2.14
+google-cloud-datastore>=2.19
+python-dotenv>=1.0
+
+# --- Relational Databases & SQL (Weeks 2, 3, 4, 5) ---
+mysql-connector-python>=9.0
+pymysql>=1.1
+SQLAlchemy>=2.0
+
+# --- Web APIs & Microservices (Weeks 6 & 9) ---
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+Flask>=3.0
+Flask-SQLAlchemy>=3.1
+Flask-Marshmallow>=1.2
+marshmallow-sqlalchemy>=1.0
+
+# --- Analytics, Visualizations & Dashboards (Weeks 2, 4, 6, 7) ---
+dash>=2.17
+folium>=0.17
+matplotlib>=3.8
+seaborn>=0.13
+streamlit>=1.36
+
+# --- NoSQL & Graph Databases (Week 7) ---
+neo4j>=5.20
+networkx>=3.3
+pymongo>=4.8
+
+# --- AI, LLM & SQL Agents (Week 4 Lab) ---
+langchain>=0.3
+langchain-community>=0.3
+langchain-ollama>=0.2
+
+# --- Distributed Processing (Week 8) ---
+pyspark>=3.5
