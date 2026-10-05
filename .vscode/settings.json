@@ -11,7 +11,7 @@
     "terminal.integrated.profiles.windows": {
         "Miniforge Prompt": {
             "path": "C:\\WINDOWS\\System32\\cmd.exe",
-            "args": ["/k", "C:\\Users\\Obaro\\miniforge3\\Scripts\\activate.bat"]
+            "args": ["/k", "C:\\Users\\Obaro\\miniforge3\\Scripts\\activate.bat && mamba activate data-env"]
         }
     },
     "terminal.integrated.defaultProfile.windows": "Miniforge Prompt"
