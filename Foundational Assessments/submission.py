@@ -105,7 +105,7 @@ def get_minimum(data):
 
 
 # Test Cases for F5
-print(get_minimum([3, 1, 4, 11, 5, 9, 2, 6, -1]))
+# print(get_minimum([3, 1, 4, 11, 5, 9, 2, 6, -1]))
 
 # F6
 # accepts three arguments, a dataframe, old column name and the new column name. In the function, update the column name from old to the new and return the modified dataframe
