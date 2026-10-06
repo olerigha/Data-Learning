@@ -8,5 +8,13 @@
         }
     },
     "terminal.integrated.defaultProfile.windows": "Miniforge Prompt",
-    "python.defaultInterpreterPath": "C:\\Users\\Obaro\\miniforge3\\envs\\data-env\\python.exe"
+    "python.defaultInterpreterPath": "C:\\Users\\Obaro\\miniforge3\\envs\\data-env\\python.exe",
+    "python-envs.pythonProjects": [
+        {
+            "path": ".",
+            "envManager": "ms-python.python:conda",
+            "packageManager": "ms-python.python:conda"
+        }
+    ],
+    "r.lsp.promptToInstall": false
 }
