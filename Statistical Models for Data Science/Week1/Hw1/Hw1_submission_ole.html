@@ -7804,8 +7804,7 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="ADSP-31014-%E2%80%94-Statistical-Models-for-Data-Science">ADSP 31014 — Statistical Models for Data Science<a class="anchor-link" href="#ADSP-31014-%E2%80%94-Statistical-Models-for-Data-Science">¶</a></h1><h2 id="Homework-1">Homework 1<a class="anchor-link" href="#Homework-1">¶</a></h2><p><strong>Name:</strong> Obaro Erigha<br/>
 <strong>Term:</strong> Autumn 2026</p>
-<hr/>
-<h3 id="Academic-Integrity-Statement">Academic Integrity Statement<a class="anchor-link" href="#Academic-Integrity-Statement">¶</a></h3><p>I affirm that this submission is my own work. Any collaborators, external sources, or AI tools used are acknowledged above.</p>
+<p><strong>External Sources:</strong> Claude for Q13 as requested</p>
 <hr/>
 </div>
 </div>
@@ -7826,7 +7825,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [53]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [47]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -7858,7 +7857,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[53]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[47]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -7952,7 +7951,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Question-1">Question 1<a class="anchor-link" href="#Question-1">¶</a></h2><p>Compute the (marginal) probability mass function of 𝑋 by “summing over the probabilities of 𝑌”.</p>
+<h4 id="Question-1">Question 1<a class="anchor-link" href="#Question-1">¶</a></h4><p>Compute the (marginal) probability mass function of 𝑋 by “summing over the probabilities of 𝑌”.</p>
 </div>
 </div>
 </div>
@@ -7961,7 +7960,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [54]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">p_X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"x"</span><span class="p">)[</span><span class="s2">"p_x_y"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -7996,7 +7995,7 @@ Name: p_x_y, dtype: float64
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Question-2">Question 2<a class="anchor-link" href="#Question-2">¶</a></h2><p>Compute the expectation 𝔼(𝑋) of 𝑋.</p>
+<h4 id="Question-2">Question 2<a class="anchor-link" href="#Question-2">¶</a></h4><p>Compute the expectation 𝔼(𝑋) of 𝑋.</p>
 </div>
 </div>
 </div>
@@ -8005,7 +8004,7 @@ Name: p_x_y, dtype: float64
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [55]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [49]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># print(p_X.index)</span>
@@ -8039,7 +8038,7 @@ Name: p_x_y, dtype: float64
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Question-3">Question 3<a class="anchor-link" href="#Question-3">¶</a></h2><p>Compute the Variance Var(𝑋) of 𝑋.</p>
+<h4 id="Question-3">Question 3<a class="anchor-link" href="#Question-3">¶</a></h4><p>Compute the Variance Var(𝑋) of 𝑋.</p>
 </div>
 </div>
 </div>
@@ -8048,7 +8047,7 @@ Name: p_x_y, dtype: float64
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [56]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [50]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># print((p_X.index**2 * p_X).sum())</span>
@@ -8057,7 +8056,7 @@ Name: p_x_y, dtype: float64
 
 <span class="n">Var_X</span> <span class="o">=</span> <span class="n">E_X2</span> <span class="o">-</span> <span class="n">E_X</span><span class="o">**</span><span class="mi">2</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">Var_X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">Var_X</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -8070,7 +8069,7 @@ Name: p_x_y, dtype: float64
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>0.6000000000000001
+<pre>0.6
 </pre>
 </div>
 </div>
@@ -8083,7 +8082,7 @@ Name: p_x_y, dtype: float64
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Question-4">Question 4<a class="anchor-link" href="#Question-4">¶</a></h2><p>Compute the standard deviation SD(𝑋) = sqrt(Var(𝑋)) of 𝑋</p>
+<h4 id="Question-4">Question 4<a class="anchor-link" href="#Question-4">¶</a></h4><p>Compute the standard deviation SD(𝑋) = sqrt(Var(𝑋)) of 𝑋</p>
 </div>
 </div>
 </div>
@@ -8092,7 +8091,7 @@ Name: p_x_y, dtype: float64
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [57]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [51]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">SD_X</span> <span class="o">=</span> <span class="n">Var_X</span><span class="o">**</span><span class="mf">0.5</span>
@@ -8123,7 +8122,7 @@ Name: p_x_y, dtype: float64
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Question-5">Question 5<a class="anchor-link" href="#Question-5">¶</a></h2><p>Similarly, compute the (marginal) probability mass function 𝑝𝑌(𝑦), expectation 𝔼(𝑌), variance Var(𝑌), and standard deviation SD(𝑌) of 𝑌.</p>
+<h4 id="Question-5">Question 5<a class="anchor-link" href="#Question-5">¶</a></h4><p>Similarly, compute the (marginal) probability mass function 𝑝𝑌(𝑦), expectation 𝔼(𝑌), variance Var(𝑌), and standard deviation SD(𝑌) of 𝑌.</p>
 </div>
 </div>
 </div>
@@ -8132,7 +8131,7 @@ Name: p_x_y, dtype: float64
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [58]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [52]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">p_Y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)[</span><span class="s2">"p_x_y"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -8141,17 +8140,17 @@ Name: p_x_y, dtype: float64
 
 <span class="n">E_Y</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_Y</span><span class="o">.</span><span class="n">index</span> <span class="o">*</span> <span class="n">p_Y</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">E_Y</span><span class="p">)</span> <span class="c1"># expectation 𝔼(𝑌)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">E_Y</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="c1"># expectation 𝔼(𝑌)</span>
 
 <span class="n">E_Y2</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_Y</span><span class="o">.</span><span class="n">index</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">p_Y</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="c1"># E(Y^2)</span>
 
 <span class="n">Var_Y</span> <span class="o">=</span> <span class="n">E_Y2</span> <span class="o">-</span> <span class="n">E_Y</span><span class="o">**</span><span class="mi">2</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">Var_Y</span><span class="p">)</span> <span class="c1"># variance Var(𝑌)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">Var_Y</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="c1"># variance Var(𝑌)</span>
 
 <span class="n">SD_Y</span> <span class="o">=</span> <span class="n">Var_Y</span><span class="o">**</span><span class="mf">0.5</span> 
 
-<span class="nb">print</span><span class="p">(</span><span class="n">SD_Y</span><span class="p">)</span> <span class="c1"># standard deviation SD(𝑌)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">SD_Y</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="c1"># standard deviation SD(𝑌)</span>
 </pre></div>
 </div>
 </div>
@@ -8169,9 +8168,9 @@ Name: p_x_y, dtype: float64
 2    0.5
 4    0.2
 Name: p_x_y, dtype: float64
-2.0999999999999996
-1.0900000000000016
-1.0440306508910557
+2.1
+1.09
+1.044
 </pre>
 </div>
 </div>
@@ -8184,7 +8183,7 @@ Name: p_x_y, dtype: float64
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Question-6">Question 6<a class="anchor-link" href="#Question-6">¶</a></h2><p>Compute the covariance Cov(𝑋, 𝑌) of 𝑋 and 𝑌.</p>
+<h4 id="Question-6">Question 6<a class="anchor-link" href="#Question-6">¶</a></h4><p>Compute the covariance Cov(𝑋, 𝑌) of 𝑋 and 𝑌.</p>
 </div>
 </div>
 </div>
@@ -8193,14 +8192,16 @@ Name: p_x_y, dtype: float64
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [59]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [53]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">E_XY</span> <span class="o">=</span> <span class="n">E_X</span> <span class="o">*</span> <span class="n">E_Y</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">E_XY</span><span class="p">)</span> <span class="c1"># expectation of the product 𝔼(𝑋𝑌)  </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">E_XY</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s2">"p_x_y"</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
-<span class="n">test</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s2">"p_x_y"</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">)</span> <span class="c1"># expectation of the product 𝔼(𝑋𝑌)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">E_XY</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># expectation of the product 𝔼(𝑋𝑌)</span>
+
+<span class="n">Cov_XY</span> <span class="o">=</span> <span class="n">E_XY</span> <span class="o">-</span> <span class="n">E_X</span> <span class="o">*</span> <span class="n">E_Y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">Cov_XY</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># covariance Cov(𝑋,𝑌)</span>
 </pre></div>
 </div>
 </div>
@@ -8213,10 +8214,406 @@ Name: p_x_y, dtype: float64
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>0.0
--2.7755575615628914e-17
+<pre>-0.0
+-0.0
 </pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b8c23dff">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Question-7">Question 7<a class="anchor-link" href="#Question-7">¶</a></h4><p>Compute the correlation Corr(𝑋, 𝑌) of 𝑋 and 𝑌.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6c19539a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [54]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">SD_X</span> <span class="o">=</span> <span class="n">Var_X</span> <span class="o">**</span> <span class="mf">0.5</span>
+<span class="n">SD_Y</span> <span class="o">=</span> <span class="n">Var_Y</span> <span class="o">**</span> <span class="mf">0.5</span>
+
+<span class="n">Corr_XY</span> <span class="o">=</span> <span class="n">Cov_XY</span> <span class="o">/</span> <span class="p">(</span><span class="n">SD_X</span> <span class="o">*</span> <span class="n">SD_Y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">Corr_XY</span><span class="p">))</span> <span class="c1"># correlation Corr(𝑋,𝑌)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1052708f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Question-8">Question 8<a class="anchor-link" href="#Question-8">¶</a></h4><p>Based on Question 7, are random variables 𝑋 and 𝑌 correlated or uncorrelated?</p>
+<p>Corr_XY = 0, Therefore 𝑋 and 𝑌 are uncorrelated.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bf43461d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Question-9">Question 9<a class="anchor-link" href="#Question-9">¶</a></h4><p>Based on Question 1 and 5, if we write the values of the marginal probability mass functions of 𝑋 and 𝑌 as column and row vectors respectively;</p>
+<p>Perform matrix multiplication to obtain a 3 × 3 matrix</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=42e6b601">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [55]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">p_X_vec</span> <span class="o">=</span> <span class="n">p_X</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># column vector (3×1)</span>
+<span class="n">p_Y_vec</span> <span class="o">=</span> <span class="n">p_Y</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># row vector   (1×3)</span>
+
+<span class="n">outer_product</span> <span class="o">=</span> <span class="n">p_X_vec</span> <span class="o">@</span> <span class="n">p_Y_vec</span>     <span class="c1"># (3×1) @ (1×3) = 3×3</span>
+<span class="n">outer_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">outer_product</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">p_X</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">p_Y</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">outer_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[55]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>y</th>
+<th>1</th>
+<th>2</th>
+<th>4</th>
+</tr>
+<tr>
+<th>x</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>-1</th>
+<td>0.06</td>
+<td>0.10</td>
+<td>0.04</td>
+</tr>
+<tr>
+<th>0</th>
+<td>0.21</td>
+<td>0.35</td>
+<td>0.14</td>
+</tr>
+<tr>
+<th>2</th>
+<td>0.03</td>
+<td>0.05</td>
+<td>0.02</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=caa19974">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Question-10">Question 10<a class="anchor-link" href="#Question-10">¶</a></h4><p>If we write the values of the joint probability mass function of (𝑋, 𝑌) as a 3 × 3 matrix.</p>
+<p>What is the relationship between this matrix and the one in Question 9? (Hint: The answer should be simple and obvious.)</p>
+<p>They are the same.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=999f3aea">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Question-11">Question 11<a class="anchor-link" href="#Question-11">¶</a></h4><p>Based on Question 10, are random variables 𝑋 and 𝑌 independent or not?</p>
+<p>The random variables 𝑋 and 𝑌 are independent as the joint probability matrix is the same as the px * py 3x3 matrix.</p>
+<p>eg.
+P(X=x,Y=y)=P(X=x)⋅P(Y=y)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7a0833cc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Question-12">Question 12<a class="anchor-link" href="#Question-12">¶</a></h4><p>To model the relationship of positive quantities (e.g. 𝑥𝑥 = “infection rate of an apocalyptic virus” and 𝑦𝑦=
+“number of zombies”), we sometimes consider an exponential growth model form</p>
+<p>𝑦= 𝛽0(𝑥^𝛽1)𝜖  with parameters 𝛽0 &gt; 0 and 𝛽1 ∈ℝ, and a multiplicative positive noise term 𝜖 &gt; 0.  Can this model be viewed as a linear model?                    Explain.  (Hint: Take logarithm.)</p>
+<p>Yes.</p>
+<p>You can rewrite this by taking the logarithm of both sides of the formula as follows:</p>
+<ol>
+<li>log(𝑦) = log(𝛽0(𝑥^𝛽1)𝜖)</li>
+<li>log(𝑦) = log(𝛽0) + 𝛽1*log(𝑥) + log(𝜖)</li>
+</ol>
+<p>𝑦' = log(𝑦)
+𝑥' = log(𝑥)
+𝛽0' = log(𝛽0)
+𝜖' = log(𝜖)</p>
+<p>𝑦' = 𝛽0' + 𝛽1*𝑥' + 𝜖'</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=937aae74">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Question-13">Question 13<a class="anchor-link" href="#Question-13">¶</a></h4><p>Write a GenAI prompt to describe our Chicago taxi trip data set and its nature (e.g. column names) and ask some GenAI tool (e.g. ChatGPT, Gemini, Claude) for potential data issues to be aware of when performing data cleaning and exploratory data analysis on this data set.  What does GenAI say? How good are the suggestions?  Is there any suggestion that we have not thought of?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6e3a79c6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Prompt:">Prompt:<a class="anchor-link" href="#Prompt:">¶</a></h4><p>I'm a data analyst about to clean and explore a public dataset: Chicago taxi
+trips for calendar year 2022, from the City of Chicago Data Portal ("Taxi
+Trips"). It has ~6.4 million rows (one row per trip) and 23 columns. I plan on using Python to perform the cleaning.</p>
+<p>The columns are:</p>
+<ul>
+<li>Trip ID, Taxi ID: hashed strings (Trip ID is unique)</li>
+<li>Trip Start Timestamp, Trip End Timestamp: strings like "01/01/2022 12:00:00 AM"</li>
+<li>Trip Seconds, Trip Miles: floats</li>
+<li>Pickup/Dropoff Census Tract: 11-digit codes, loaded as float</li>
+<li>Pickup/Dropoff Community Area: integer codes 1-77, loaded as float</li>
+<li>Fare, Tips, Tolls, Extras, Trip Total: USD floats</li>
+<li>Payment Type, Company: categorical strings</li>
+<li>Pickup/Dropoff Centroid Latitude, Longitude: floats</li>
+<li>Pickup/Dropoff Centroid Location: WKT strings, e.g. "POINT (-87.63 41.89)"</li>
+</ul>
+<p>Please look out for potential data issues I should be aware of when cleaning
+and doing exploratory data analysis on this dataset.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5225d127">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Response-&amp;-Suggestions:">Response &amp; Suggestions:<a class="anchor-link" href="#Response-&amp;-Suggestions:">¶</a></h4><p>Potential data issues: Chicago Taxi Trips 2022
+A. Cross-cutting issues (highest importance)</p>
+<ol>
+<li>Missingness is structural, not random</li>
+</ol>
+<p>Why: The city masks locations for privacy (low-volume tracts, trips outside Chicago). Some companies or payment types may not report fare fields at all.
+Detect: df.isna().groupby(df['Company']).mean(), and the same by Payment Type, month and area.
+Handle: Treat missingness as information. Report which groups it hits before dropping or imputing.
+Risk: Silent bias toward certain companies, payment types or neighborhoods.</p>
+<ol start="2">
+<li>Bias introduced by the cleaning itself</li>
+</ol>
+<p>Why: Dropping rows with missing fares or locations removes disproportionate shares of certain groups (for example, cash trips or low-density areas).
+Detect: Compare payment mix, hour-of-day, company share and area distribution before and after cleaning.
+Handle: Document what was removed and why. Test whether conclusions change under looser or stricter thresholds.
+Risk: Conclusions that apply only to the surviving subset.</p>
+<ol start="3">
+<li>Arbitrary outlier thresholds</li>
+</ol>
+<p>Why: Cutoffs such as "under 2 hours" or "under 100 miles" are judgment calls.
+Handle: Run a sensitivity check at several thresholds, and keep a log of rows removed per rule.
+B. Timestamps</p>
+<ol start="4">
+<li>Parsing and rounding</li>
+</ol>
+<p>Strings need pd.to_datetime(..., format='%m/%d/%Y %I:%M:%S %p'). Timestamps are very likely rounded to 15-minute intervals for privacy, so derived durations are only approximate.</p>
+<ol start="5">
+<li>Daylight saving time</li>
+</ol>
+<p>Times are local and timezone-naive. The spring-forward date has a missing hour that can make derived durations wrong by an hour. The fall-back date has a repeated hour that creates ambiguity and apparent negative durations.
+Detect: Compare Trip Seconds against End − Start and look at where the disagreements cluster by date.</p>
+<ol start="6">
+<li>Logical and range errors</li>
+</ol>
+<p>End before start, years outside 2022 (end dates can legitimately spill into Jan 2023), and zero-length trips.
+Detect: df[df.start &gt; df.end], df.end.dt.year.value_counts().
+C. Trip Seconds and Trip Miles</p>
+<ol start="7">
+<li>Zeros and extremes</li>
+</ol>
+<p>Expect many zeros (cancelled trips, meter glitches), 24-hour trips, and distances in the thousands of miles. Zero miles with nonzero time, and zero time with nonzero miles, are both common.
+Handle: Define a plausible range (for example 1 s to a few hours, 0.01 to ~100 miles) and justify it.</p>
+<ol start="8">
+<li>Implied speed (often overlooked)</li>
+</ol>
+<p>Range filters on each column separately miss combinations such as 50 miles in 3 minutes.
+Detect: speed = miles / (seconds / 3600), then inspect the upper tail and drop physically impossible speeds (for example above ~80 mph).</p>
+<ol start="9">
+<li>Duration consistency</li>
+</ol>
+<p>Trip Seconds and timestamp difference should agree within the 15-minute rounding tolerance. Large gaps indicate a bad record.
+D. Money columns</p>
+<ol start="10">
+<li>Zero, tiny and absurd values</li>
+</ol>
+<p>Zero or one-cent fares, fares in the thousands, and trips where tolls or extras are in the thousands. Taxi fares have a base amount, so anything below it is suspect.
+Detect: df['Fare'].value_counts().sort_index().head(20) and .nlargest(20).</p>
+<ol start="11">
+<li>Cash tips are not recorded</li>
+</ol>
+<p>Tips are typically captured only for card or mobile payments. For cash, Tips = 0 means "unknown", not "no tip".
+Handle: Analyze tipping only on non-cash payments.
+Risk: Badly understated tip rates, and a spike at zero in any tip histogram.</p>
+<ol start="12">
+<li>Components may not sum to Trip Total</li>
+</ol>
+<p>Taxes, surcharges or other fees may not appear in any column.
+Detect: Use np.isclose(...) or round to cents. Comparing floats with == produces false mismatches from rounding error.</p>
+<ol start="13">
+<li>Spikes at fixed amounts</li>
+</ol>
+<p>Base fare, flat airport rates and standard surcharges create peaks at specific values. These are real, not errors. Don't "fix" them.
+E. Location columns</p>
+<ol start="14">
+<li>Centroids, not true positions</li>
+</ol>
+<p>Pickup and dropoff coordinates are centroids of tracts or community areas, so many trips share identical points and the number of unique coordinates is small.
+Risk: Distance computed from coordinates is crude, and maps look gridded. Don't treat them as GPS data.</p>
+<ol start="15">
+<li>Redundant and inconsistent columns</li>
+</ol>
+<p>Lat, lon and the WKT string carry the same information. Parse the WKT and confirm it matches. Keep one representation.</p>
+<ol start="16">
+<li>Codes stored as floats</li>
+</ol>
+<p>Census tracts are 11-digit identifiers and community areas are integers 1–77. NaNs force them to float. Convert to string or nullable Int64.</p>
+<ol start="17">
+<li>Tract vs community area availability</li>
+</ol>
+<p>Often only one of the two is present. Decide which is your location key.
+F. Categorical columns</p>
+<ol start="18">
+<li>Company names</li>
+</ol>
+<p>Spelling and case variants, trailing "Inc." or ", LLC", truncated names, and owner-operator entries labeled with ID numbers.
+Detect: df['Company'].value_counts().sort_index() and merge near-duplicates.</p>
+<ol start="19">
+<li>Payment type</li>
+</ol>
+<p>Categories such as Unknown, Dispute, No Charge and Prcard. "Unknown" may reflect one company's reporting practice, not a real payment method. Check the company × payment type table before merging categories.
+Dispute and No Charge rows usually have unreliable fares.
+G. IDs and duplicates</p>
+<ol start="20">
+<li>Taxi ID is a vehicle, not a driver</li>
+</ol>
+<p>Counts per taxi are heavily skewed, and busy taxis are likely shared across drivers and shifts.
+Detect: Sort by Taxi ID and start time, and flag overlapping trips. A single taxi cannot be on two trips at once.</p>
+<ol start="21">
+<li>Hidden duplicates</li>
+</ol>
+<p>Trip ID may be unique while the underlying trip is duplicated. Check duplicates on all other columns.
+H. Context and technical</p>
+<ol start="22">
+<li>2022 context</li>
+</ol>
+<p>It was a post-COVID recovery year. Low January volume, seasonality, weather and holidays are real patterns, not data errors. Weekday and hour effects are strong.</p>
+<ol start="23">
+<li>Memory and dtypes</li>
+</ol>
+<p>At ~6.4M rows × 23 columns, the data is about 3 GB in pandas. Use category for company and payment type, downcast numerics, and drop redundant columns early. Consider parquet over CSV.
+Suggested order of work
+Parse types and check missingness structure.
+Fix logical errors (timestamps, DST, ranges).
+Check cross-field consistency (speed, duration, money).
+Standardize categories.
+Apply filters, logging the rows removed per rule.
+Compare before and after distributions to check for bias.</p>
+<p>I only have the schema, not the values. The detection steps above should confirm which of these issues actually appear in your data.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a89c0f3c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Quality-of-Suggestions">Quality of Suggestions<a class="anchor-link" href="#Quality-of-Suggestions">¶</a></h4><p>Gave a good checlist of suggestions, but a bit generic as it only had descriptions of the dataset. The notebook addresses most of the standard issues but there were a few interesting suggestions that were missed.</p>
+<ol>
+<li>Implied speed check to Compute miles per hour and drop physically impossible speeds.</li>
+<li>Cash tips are not recorded. Tips = 0 for cash likely means "unknown", not "no tip", which distorts the tip analysis. Analyze tipping only for card and mobile payments.</li>
+<li>Float equality bug. Comparing Fare + Tips + Tolls + Extras == Trip Total with == overstates the 27% mismatch because of rounding.</li>
+<li>Bias from our own cleaning. We dropped 25% of rows, and the dropped rows are skewed toward cash payments and privacy-masked locations. Compare distributions before and after cleaning and state the limitation.</li>
+<li>Overlapping trips per taxi. A single taxi cannot be on two trips at once, so overlaps reveal duplicate or bad records that row-by-row checks miss.</li>
+<li>Payment type merging. Collapsing Mobile, Prcard and Unknown into "Other" loses information. "Unknown" is largely one company's reporting artifact.</li>
+<li>Fall-back daylight saving (November). We caught the March spring-forward problem but not the repeated hour in November.</li>
+<li>Centroid limits and threshold sensitivity. Coordinates are area centroids, so distances from them are crude, and cutoffs like 2 hours, 100 miles and $200 should be tested for sensitivity.</li>
+</ol>
 </div>
 </div>
 </div>
