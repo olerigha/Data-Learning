@@ -1,0 +1,10 @@
+- What are the differences between groupby/orderby 
+- difference between where and having
+- Can we have where after aggregate query ( group by )
+- What is limit used for ?
+- What does Union all do ?
+- what is natural Join ?
+- when are subqueries used ?
+- What are views used for ? How do you guarantee the data integrity ?
+- What are indexes used for ?
+- Why do we need to cast ? difference between implicit versus explicit

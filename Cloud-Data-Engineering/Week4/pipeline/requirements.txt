@@ -1,0 +1,7 @@
+# Week 4 Pipeline Dependencies
+prefect>=3.0
+beautifulsoup4>=4.12
+requests>=2.31
+mysql-connector-python>=9.0
+PyYAML>=6.0
+pandas>=2.2

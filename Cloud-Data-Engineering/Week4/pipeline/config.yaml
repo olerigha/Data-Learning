@@ -1,0 +1,26 @@
+# Week 4 IMDb Movie Data Pipeline Configuration
+# Values with ${VAR:-default} are resolved at runtime from environment variables.
+
+pipeline:
+  name: "imdb_movie_pipeline"
+  version: "1.0"
+  target_year: 2020
+
+database:
+  host: "${DB_HOST:-localhost}"
+  port: 3306
+  user: "${DB_USER:-root}"
+  password: "${MYSQL_PASSWORD:-}"
+  database: "${DB_NAME:-imdb_data}"
+
+ingestion:
+  search_url_template: "https://www.imdb.com/search/title/?release_date={year}-01-01,{year}-12-31"
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  request_timeout_seconds: 10
+  fallback_fixture_path: "data/movie_ratings.csv"
+
+settings:
+  max_retries: 3
+  retry_delay_seconds: 0.05
+  log_level: "${LOG_LEVEL:-INFO}"
+  log_file: "${LOG_FILE:-pipeline.log}"
