@@ -1,0 +1,74 @@
+Train rows 22089, test rows 14535
+Training means used for centering: AT        17.759; AP      1012.774; AH        79.555; AFDP       4.035; TIT     1083.045; TEY      133.482
+Mean NOx train 68.82, test 59.98
+Skewness NOx (train) 1.106; log(NOx) 0.458
+VIF all 9 process/ambient sensors:
+AT       13.2
+AP        1.7
+AH        1.7
+AFDP      2.0
+GTEP    260.8
+TIT     427.4
+TAT     164.9
+TEY     442.0
+CDP     355.9
+VIF reduced set:
+AT       2.96
+AP       1.21
+AH       1.68
+AFDP     1.92
+TIT      9.22
+TEY     11.11
+Model comparison (train 2011-13 in-sample; validation fit 2011-12 -> 2013):
+                      model  params  adj_R2 (own scale)  train RMSE  val2013 RMSE  val2013 MAE  val2013 R2  resid skew
+      M0 all 9 sensors, NOx      10              0.4919      7.8725       10.5871       7.6536      0.2277      1.0973
+     M1 reduced linear, NOx       7              0.4730      8.0180       10.3086       7.5008      0.2678      1.1916
+ M2 reduced linear, log NOx       7              0.4900      8.0511       10.3478       7.4015      0.2622      0.6916
+      M3 + TIT:TEY, log NOx       8              0.4905      8.0538       10.3432       7.3976      0.2629      0.6833
+            M4 + TIT^2, NOx       8              0.6446      6.5840        8.7881       6.4154      0.4679      1.0008
+        M5 + TIT^2, log NOx       8              0.6504      6.8089        8.8384       6.4018      0.4618      0.5384
+M6 + TIT^2 + TEY^2, log NOx       9              0.7069      6.6101        8.4234       6.0951      0.5111      0.3511
+   M7 M5 minus AFDP (final)       7              0.6504      6.8092        8.3956       6.0245      0.5144      0.5396
+VIF final model terms:
+AT_c              3.71
+AP_c              1.22
+AH_c              1.68
+TIT_c            35.64
+I(TIT_c ** 2)     5.33
+TEY_c            23.42
+Smearing factor 1.00419
+Final model: R2(log) 0.6505, adj 0.6504, F 6849.2, resid SE 0.0907, AIC -43361.4
+Train (NOx scale): R2 0.620, RMSE 6.809, MAE 4.598, Bias(actual-pred) -0.004
+Test (NOx scale): R2 0.035, RMSE 10.391, MAE 7.792, Bias(actual-pred) -5.744
+Test 2014: R2 0.245, RMSE 8.664, MAE 5.951, Bias(actual-pred) -2.329
+Test 2015: R2 -0.128, RMSE 11.825, MAE 9.574, Bias(actual-pred) -9.051
+Test corr(actual,pred) 0.7369; RMSE after removing constant test bias 8.659; MAE after bias removal 6.536
+AT_c: coef -0.02942 -> -2.90% NOx per unit; p=0
+AP_c: coef -0.00263 -> -0.26% NOx per unit; p=2.57e-135
+AH_c: coef -0.00396 -> -0.39% NOx per unit; p=0
+TEY_c: coef -0.02036 -> -2.02% NOx per unit; p=0
+TIT slope at training mean (1083.0): +2.31% per °C; vertex (minimum NOx at fixed other vars) TIT = 1050.7 °C
+  marginal effect at TIT 1040: -0.76% per °C
+  marginal effect at TIT 1060: +0.66% per °C
+  marginal effect at TIT 1080: +2.09% per °C
+  marginal effect at TIT 1100: +3.55% per °C
+Share of training rows with TIT below vertex: 4.2%
+1 SD (7.33) of AT: -19.41% NOx
+1 SD (6.38) of AP: -1.66% NOx
+1 SD (13.94) of AH: -5.37% NOx
+1 SD (16.01) of TEY: -27.82% NOx
+10 °C lower TIT at mean TEY (from mean TIT): -17.58% NOx
+Breusch-Pagan LM 1694.9, p 0
+Residual skew 0.540, excess kurtosis 3.849
+Durbin-Watson 0.557
+Residual lag-1 autocorrelation 0.721
+Linear-scale M1 residual skew 1.192, corr(|resid|, fitted) 0.124; log M5 corr(|resid|, fitted) 0.080
+Max Cook's D 0.2588; rows with Cook's D > 4/n: 1512
+|standardized resid| > 3: 308
+HC3 p-values: Intercept        0.0; AT_c             0.0; AP_c             0.0; AH_c             0.0; TIT_c            0.0; I(TIT_c ** 2)    0.0; TEY_c            0.0
+HAC (Newey-West, 24 lags) SE ratio to OLS SE: Intercept        4.12; AT_c             3.38; AP_c             3.40; AH_c             2.88; TIT_c            3.57; I(TIT_c ** 2)    4.54; TEY_c            3.33
+HAC p-values: Intercept        0.0; AT_c             0.0; AP_c             0.0; AH_c             0.0; TIT_c            0.0; I(TIT_c ** 2)    0.0; TEY_c            0.0
+Training TIT~TEY slope 0.949 °C per MWh, R2 0.812, residual SD of TIT given TEY 7.32 °C
+Net effect of +1 MWh moving along typical TIT-TEY line (at mean TIT): +0.13% NOx
+Year effects (log scale) in all-years fit: 2012: +2.2%, 2013: +2.9%, 2014: -3.9%, 2015: -12.4%
+Mean training residual (log) by TEY band: TEY; (0, 110]     -0.0356; (110, 125]    0.0073; (125, 135]    0.0084; (135, 145]   -0.0030; (145, 160]    0.0104; (160, 200]   -0.0431

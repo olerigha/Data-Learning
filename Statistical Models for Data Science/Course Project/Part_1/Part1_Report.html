@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Course Project Part 1</title>
+<style>
+  @page { size: Letter; margin: 0.7in 0.75in; }
+  :root { --ink: #111; --muted: #555; --rule: #999; }
+  html { background: #fff; }
+  body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10.5pt; line-height: 1.28; color: var(--ink); background: #fff;
+    max-width: 7in; margin: 0 auto;
+  }
+  header { text-align: center; margin-bottom: 8pt; }
+  header p { margin: 0; font-weight: bold; font-size: 11.5pt; text-align: center; }
+  header p.author { font-weight: normal; font-size: 10.5pt; margin-top: 2pt; }
+  h2 { font-size: 11.5pt; margin: 9pt 0 3pt; break-after: avoid; }
+  p { margin: 0 0 5pt; text-align: justify; }
+  ul { margin: 0 0 5pt; padding-left: 18pt; }
+  li { margin-bottom: 2pt; }
+  figure { margin: 4pt 0 6pt; text-align: center; break-inside: avoid; }
+  figure img { display: block; margin: 0 auto; }
+  figcaption { font-size: 9.5pt; margin-top: 2pt; }
+  .full img { width: 82%; }
+  .full.short img { width: 74%; }
+  .pair { display: flex; gap: 10pt; align-items: flex-end; break-inside: avoid; margin: 4pt 0 6pt; }
+  .pair figure { flex: 1; margin: 0; }
+  .pair img { width: 100%; }
+  .float { float: right; width: 40%; margin: 0 0 4pt 12pt; }
+  .float img { width: 100%; }
+  .clear { clear: both; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; line-height: 1.2; margin: 4pt 0 6pt; }
+  th, td { border: 0.6pt solid var(--rule); padding: 2pt 4pt; vertical-align: top; text-align: left; }
+  th { background: #e8e8e8; }
+  col.c1 { width: 11%; } col.c2 { width: 27%; } col.c3 { width: 8%; } col.c4 { width: 9%; }
+  tr { break-inside: avoid; }
+  td ul { margin: 0; padding-left: 10pt; }
+  td li { margin: 0; }
+  code { font-family: Consolas, "Courier New", monospace; font-size: 9pt; }
+  @media screen { body { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <p>ADSP 31014 Statistical Models for Data Science</p>
+  <p>Course Project Part 1 — Gas Turbine CO and NOx Emissions</p>
+  <p class="author">Obaro Erigha</p>
+</header>
+
+<h2>Overview of Data Set</h2>
+<p>The data set contains 36,733 hourly records from a natural-gas-fired gas turbine at a combined-cycle power plant in north-western Turkey, covering 2011–2015. It was obtained from the UCI Machine Learning Repository (<em>Gas Turbine CO and NOx Emission Data Set</em>; Kaya, Tüfekci &amp; Uzun, 2019), where it was published as a benchmark for predictive emission monitoring systems (PEMS). Each record is the hourly average of 11 sensor signals: 3 ambient conditions, 6 process measurements around the compressor, combustor and turbine, the turbine energy yield, and 2 regulated flue-gas emissions, carbon monoxide (CO) and nitrogen oxides (NOx). The data come as five annual files with no timestamps; rows within each file are in chronological order, per the source.</p>
+
+<figure class="full">
+  <img src="../figures/fig1_hist_nox_co.png" alt="NOx Emissions and CO Emissions histograms">
+  <figcaption>Figure 1: NOx Emissions (left) and CO Emissions (right), hourly, 2011–2015.</figcaption>
+</figure>
+
+<h2>Data Table Schema</h2>
+<p>The cleaned data set has 36,624 rows and 13 columns: the 11 sensor signals plus <code>year</code> and <code>row_in_year</code>, both added during wrangling. Each row is one operating hour. All sensor columns are continuous decimals with no missing values; units follow the UCI documentation. Statistics below are for the cleaned data.</p>
+
+<table>
+  <colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"><col></colgroup>
+  <thead><tr><th>Column Name</th><th>Description</th><th>Data Type</th><th>Example Value</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>AT</td><td>Ambient temperature (°C)</td><td>decimal</td><td>4.588</td><td><ul><li>Range −6.2 to 37.1; mean 17.7</li><li>62 hours below 0 °C; strong winter–summer cycle</li></ul></td></tr>
+    <tr><td>AP</td><td>Ambient pressure (mbar)</td><td>decimal</td><td>1018.7</td><td><ul><li>Range 985.9–1036.6; 0.1 mbar resolution</li></ul></td></tr>
+    <tr><td>AH</td><td>Ambient relative humidity (%)</td><td>decimal</td><td>83.675</td><td><ul><li>Range 24.1–100.2; left-skewed (median 80.5)</li><li>478 hours above 100 % (sensor saturation)</li></ul></td></tr>
+    <tr><td>AFDP</td><td>Air filter differential pressure (mbar)</td><td>decimal</td><td>3.576</td><td><ul><li>Range 2.1–7.6</li><li>Annual mean falls from 4.31 (2012) to 3.60 (2015)</li></ul></td></tr>
+    <tr><td>GTEP</td><td>Gas turbine exhaust pressure (mbar)</td><td>decimal</td><td>23.979</td><td><ul><li>Range 17.7–40.7</li><li>Near-duplicate of CDP and TEY (r ≥ 0.96)</li></ul></td></tr>
+    <tr><td>TIT</td><td>Turbine inlet temperature (°C)</td><td>decimal</td><td>1086.2</td><td><ul><li>Range 1000.8–1100.9; left-skewed</li><li>19.3 % of hours within 1 °C of the maximum</li></ul></td></tr>
+    <tr><td>TAT</td><td>Turbine after (exhaust) temperature (°C)</td><td>decimal</td><td>549.83</td><td><ul><li>Range 511.0–550.6</li><li>63.9 % of hours within 1 °C of the maximum</li></ul></td></tr>
+    <tr><td>CDP</td><td>Compressor discharge pressure (mbar)</td><td>decimal</td><td>11.898</td><td><ul><li>Range 9.9–15.2; r = 0.99 with TEY</li></ul></td></tr>
+    <tr><td>TEY</td><td>Turbine energy yield (MWh)</td><td>decimal</td><td>134.67</td><td><ul><li>Range 100.0–179.5</li></ul></td></tr>
+    <tr><td>CO</td><td>Carbon monoxide (mg/m³)</td><td>decimal</td><td>0.327</td><td><ul><li>Median 1.72, mean 2.38, max 44.1</li><li>Highly right-skewed (skew 4.8)</li></ul></td></tr>
+    <tr><td>NOX</td><td>Nitrogen oxides (mg/m³)</td><td>decimal</td><td>81.952</td><td><ul><li>Median 63.9, mean 65.3, range 25.9–119.9</li><li>Annual mean drops by 8–10 in 2014–2015</li></ul></td></tr>
+    <tr><td>year</td><td>Source file year (added)</td><td>integer</td><td>2011</td><td><ul><li>2011–2015; 7,151–7,628 rows per year</li></ul></td></tr>
+    <tr><td>row_in_year</td><td>Row position in annual file (added)</td><td>integer</td><td>0</td><td><ul><li>Proxy for time of year; used in Figure 6</li></ul></td></tr>
+  </tbody>
+</table>
+
+<h2>Data Cleaning and Processing</h2>
+<p>The five annual files were concatenated and tagged with <code>year</code> and <code>row_in_year</code>. No column had missing values. Two data-quality problems were found, and the affected rows were removed:</p>
+<ul>
+  <li><strong>Exact duplicate records (7 rows):</strong> two runs of identical consecutive rows in 2014 (5 and 4 copies; the first of each was kept).</li>
+  <li><strong>Frozen NOx analyzer (102 rows):</strong> NOx reads exactly 60.38 mg/m³ for 102 consecutive hours in 2011 while every other signal keeps moving. Since hourly averages rarely repeat for more than a few hours, any run of 12 or more identical NOx readings was treated as an analyzer fault.</li>
+</ul>
+<p>Boundary values were kept: relative humidity slightly above 100 % (sensor saturation), TIT and TAT at their control ceilings, and CO readings up to 44 mg/m³. These reflect sensor limits or real operating states rather than data-entry errors. The cleaned data set has <strong>36,624 rows</strong>.</p>
+
+<h2>Exploratory Findings</h2>
+<p><strong>Emission distributions (Figure 1).</strong> NOx is unimodal and centred at 60–65 mg/m³, with a right tail: the 99th percentile is 105 and the maximum 120. CO is far more skewed: its median is only 1.72 mg/m³, yet 1 % of hours exceed 11 mg/m³.</p>
+
+<div class="pair">
+  <figure>
+    <img src="../figures/fig2_nox_vs_tit.png" alt="NOx vs TIT scatter with linear fit and binned mean">
+    <figcaption>Figure 2: NOx vs TIT.</figcaption>
+  </figure>
+  <figure>
+    <img src="../figures/fig3_co_vs_nox.png" alt="CO vs NOx scatter coloured by TEY">
+    <figcaption>Figure 3: CO vs NOx, coloured by TEY.</figcaption>
+  </figure>
+</div>
+
+<p><strong>NOx vs TIT (Figure 2).</strong> Combustion theory predicts that NOx rises with firing temperature, but the pooled data show the opposite on average: the linear fit has a slope of −0.14 mg/m³ per °C and explains only 4.6 % of the variance. Hours below 1050 °C (6.3 % of the data, mostly part load) average 80.5 mg/m³ of NOx, against 64.3 above. NOx is fairly flat near 60 between about 1055 and 1080 °C, then jumps to 70–74 in a distinct cluster at 1083–1087 °C, the base-load operating point. The relationship is clearly non-linear and depends on load.</p>
+
+<p><strong>CO vs NOx (Figure 3).</strong> Theory predicts a trade-off between the two pollutants: hotter, more complete combustion lowers CO but raises NOx. The CO side holds: CO falls sharply as firing temperature rises (r = −0.71 with TIT), from a mean of 6.2 mg/m³ below 110 MWh to 1.2 mg/m³ above 160 MWh. The NOx side does not appear as a simple inverse relationship. At part load the turbine emits more of both pollutants (overall r = +0.34).</p>
+
+<figure class="float">
+  <img src="../figures/fig4_corr_heatmap.png" alt="Correlation Matrix heatmap">
+  <figcaption>Figure 4: Correlation Matrix.</figcaption>
+</figure>
+
+<p><strong>Correlation structure (Figure 4).</strong> The process variables form one tightly correlated block that describes turbine load: CDP–TEY r = 0.99, GTEP–CDP 0.98, GTEP–TEY 0.96 and TIT–TEY 0.91. This indicates severe multicollinearity among the load variables. TAT is negatively related to that block because exhaust temperature is held at its control limit as load increases. Ambient temperature is the strongest single correlate of NOx (r = −0.56), while every load-related variable has only a weak marginal correlation with NOx (|r| ≤ 0.21).</p>
+
+<p><strong>Ambient temperature (Figure 5).</strong> Median NOx falls steadily from 77.6 mg/m³ in the coldest decile (below 7.9 °C) to 57.3 at 22.5–24.9 °C, then levels off near 57 in the three warmest deciles. The relationship holds in every year, with within-year correlations of r = −0.57 to −0.67.</p>
+
+<div class="clear"></div>
+
+<figure class="full short">
+  <img src="../figures/fig5_nox_by_at_decile.png" alt="NOx by Ambient Temperature boxplots">
+  <figcaption>Figure 5: NOx by Ambient Temperature (decile bins).</figcaption>
+</figure>
+
+<h2>Anomalies and Interesting Aspects</h2>
+
+<figure class="full short">
+  <img src="../figures/fig6_nox_seasonal_by_year.png" alt="NOx by Year, 7-day rolling mean">
+  <figcaption>Figure 6: NOx by Year (7-day rolling mean).</figcaption>
+</figure>
+
+<ul>
+  <li><strong>Step change in NOx after 2013 (Figure 6).</strong> Annual mean NOx is 67.7, 68.8 and 70.0 mg/m³ in 2011–2013, then drops to 60.1 in 2014 and 59.9 in 2015. Ambient conditions and output did not shift comparably: annual mean AT and TEY stay within 1.2 °C and 3.4 MWh of each other across all five years. Every year also shows the same winter-high, summer-low seasonal cycle.</li>
+  <li><strong>Frozen sensors.</strong> Besides the removed NOx run, CO repeats one value (0.11124 mg/m³) 21 times early in 2014. This is the horizontal streak near 0.1 in Figure 3.</li>
+  <li><strong>Varying part-load share.</strong> Part-load hours (TEY below 110 MWh) range from 2.6 % in 2011 to 16.0 % in 2013, so each year's emissions partly reflect how the unit was operated.</li>
+</ul>
+
+</body>
+</html>

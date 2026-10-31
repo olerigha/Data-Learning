@@ -1,0 +1,30 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:            np.log(NOx)   R-squared:                       0.650
+Model:                            OLS   Adj. R-squared:                  0.650
+Method:                 Least Squares   F-statistic:                     6849.
+Date:                Thu, 29 Oct 2026   Prob (F-statistic):               0.00
+Time:                        21:39:28   Log-Likelihood:                 21688.
+No. Observations:               22089   AIC:                        -4.336e+04
+Df Residuals:                   22082   BIC:                        -4.331e+04
+Df Model:                           6                                         
+Covariance Type:            nonrobust                                         
+=================================================================================
+                    coef    std err          t      P>|t|      [0.025      0.975]
+---------------------------------------------------------------------------------
+Intercept         4.1188      0.001   3517.800      0.000       4.116       4.121
+AT_c             -0.0294      0.000   -183.556      0.000      -0.030      -0.029
+AP_c             -0.0026      0.000    -24.931      0.000      -0.003      -0.002
+AH_c             -0.0040   5.67e-05    -69.796      0.000      -0.004      -0.004
+TIT_c             0.0229      0.000    105.909      0.000       0.022       0.023
+I(TIT_c ** 2)     0.0004   3.51e-06    100.678      0.000       0.000       0.000
+TEY_c            -0.0204      0.000   -110.461      0.000      -0.021      -0.020
+==============================================================================
+Omnibus:                     2902.898   Durbin-Watson:                   0.557
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            14709.454
+Skew:                           0.540   Prob(JB):                         0.00
+Kurtosis:                       6.849   Cond. No.                         959.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

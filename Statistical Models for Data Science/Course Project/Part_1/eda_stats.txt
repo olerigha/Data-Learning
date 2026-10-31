@@ -1,0 +1,37 @@
+Rows 36624, columns 13
+NOX: mean 65.31, median 63.88, sd 11.69, skew 1.02, P99 105.20, max 119.91
+CO: mean 2.38, median 1.72, sd 2.26, skew 4.84, P99 11.01, max 44.10
+NOx~TIT linear: slope -0.1422, R2 0.0456, r -0.213
+Binned mean NOx by TIT bin: 1039:86.5, 1049:68.7, 1054:66.7, 1058:61.2, 1061:59.7, 1066:63.8, 1073:63.5, 1076:59.8, 1079:58.6, 1081:59.4, 1083:70.4, 1085:74.1, 1086:72.5, 1087:69.5, 1089:66.6, 1090:65.1, 1092:64.6, 1093:64.8, 1096:65.1, 1100:61.7, 1100:61.5, 1100:61.8, 1100:62.5, 1100:64.1
+TIT<1050 rows 2296 (6.3%); mean NOx 80.45 vs TIT>=1050 64.30
+corr(CO,NOX) pearson 0.340, spearman 0.056
+corr(TIT,CO) -0.706; corr(TEY,CO) -0.570
+By TEY band (mean NOx, mean CO, mean TIT, n):
+              NOx    CO      TIT      n
+TEY                                    
+(0, 110]    70.19  6.20  1047.90   3337
+(110, 125]  65.25  3.82  1059.99   5967
+(125, 135]  65.95  1.76  1084.65  15409
+(135, 145]  65.62  1.66  1090.26   3021
+(145, 160]  61.26  1.32  1099.63   6567
+(160, 200]  65.27  1.16  1099.96   2323
+Low load TEY<110: corr(CO,NOx) 0.638; TEY>=110: 0.225
+Correlation with NOX: AT     -0.561; TIT    -0.213; GTEP   -0.202; AFDP   -0.187; CDP    -0.171; TEY    -0.116; TAT    -0.094; AH      0.165; AP      0.194; CO      0.340
+Strongest |r| pairs: CDP   TEY    0.989; GTEP  CDP    0.978;       TEY    0.964; TIT   TEY    0.910;       CDP    0.909; GTEP  TIT    0.874; TIT   CO     0.706; TAT   CDP    0.705
+Median NOx by AT decile: 77.6, 72.5, 70.1, 67.6, 64.9, 61.6, 58.6, 57.3, 57.5, 57.1
+corr(AT,NOX) -0.561; corr(AT,AH) -0.477
+Annual mean NOX: year; 2011    67.68; 2012    68.79; 2013    70.01; 2014    60.08; 2015    59.89
+2011: corr(AT,NOX) -0.674
+2012: corr(AT,NOX) -0.567
+2013: corr(AT,NOX) -0.582
+2014: corr(AT,NOX) -0.656
+2015: corr(AT,NOX) -0.594
+AH>100: 478 rows, max 100.2
+TAT within 1 °C of max (550.61): 63.9%
+TIT within 1 °C of max (1100.9): 19.3%
+TIT unique values 799, 0.1 °C resolution: True
+R2 of TIT ~ TAT + TEY: 0.9367
+R2 of TIT ~ TAT + CDP: 0.9612
+Rows with |z|>4 by column: AT        0; AP        9; AH        0; AFDP      4; GTEP      0; TIT       9; TAT      49; CDP       0; TEY       0; CO      312; NOX     162
+CO min positive 0.00039
+Most repeated CO value 0.11124 x21 (years [2014], rows 55-99)

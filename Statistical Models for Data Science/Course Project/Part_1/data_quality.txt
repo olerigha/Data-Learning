@@ -1,0 +1,51 @@
+Rows per year (raw): {2011: 7411, 2012: 7628, 2013: 7152, 2014: 7158, 2015: 7384}
+Raw shape: (36733, 13)
+Missing values (total): 0
+Exact duplicate rows removed: 7
+Flat-lined NOx rows removed (>= 12 identical consecutive hours): 102
+               min   max  size
+  year NOX                    
+  2011 60.38  1336  1437   102
+Clean shape: (36624, 13)
+Clean rows per year: {2011: 7309, 2012: 7628, 2013: 7152, 2014: 7151, 2015: 7384}
+
+Boundary / saturation checks (clean data):
+  TAT >= 549 °C: 67.5% of rows
+  TIT >= 1099 °C: 23.9% of rows
+  AH >= 100 %: 492 rows
+  CO == 0: 0 rows; CO > 10: 500; CO > 20: 56
+  NOX > 100: 554 rows; NOX < 40: 24
+  TEY < 110 MWh (low load): 3328 rows
+
+Annual means:
+year     2011     2012     2013     2014     2015
+AT      17.25    18.40    17.60    18.21    17.23
+AP    1014.07  1012.26  1012.00  1012.39  1014.51
+AH      79.17    79.07    80.46    82.13    68.65
+AFDP     4.08     4.31     3.70     3.91     3.60
+GTEP    25.64    25.18    25.11    25.74    26.13
+TIT   1084.65  1082.89  1081.57  1078.83  1078.97
+TAT    544.55   546.26   545.78   547.64   546.64
+CDP     12.20    12.00    11.97    12.02    12.10
+TEY    135.61   132.68   132.17   132.91   133.99
+CO       1.58     2.36     2.72     2.08     3.13
+NOX     67.68    68.79    70.01    60.08    59.89
+
+NOx mean by within-year 1,000-row block:
+  2011: [np.float64(73.8), np.float64(73.9), np.float64(65.4), np.float64(61.1), np.float64(56.9), np.float64(62.1), np.float64(77.1), np.float64(79.0)]
+  2012: [np.float64(77.0), np.float64(76.5), np.float64(68.3), np.float64(62.3), np.float64(61.9), np.float64(64.5), np.float64(66.2), np.float64(76.4)]
+  2013: [np.float64(78.5), np.float64(82.5), np.float64(70.3), np.float64(62.8), np.float64(59.1), np.float64(66.4), np.float64(70.0), np.float64(72.6)]
+  2014: [np.float64(68.2), np.float64(64.8), np.float64(61.7), np.float64(51.3), np.float64(50.6), np.float64(57.4), np.float64(65.3), np.float64(69.1)]
+  2015: [np.float64(70.2), np.float64(70.6), np.float64(59.8), np.float64(51.7), np.float64(55.0), np.float64(51.1), np.float64(61.2), np.float64(58.8)]
+
+Duplicate record locations (year, row_in_year):
+ year  row_in_year
+ 2014         4207
+ 2014         4208
+ 2014         4209
+ 2014         4210
+ 2014         4211
+ 2014         5197
+ 2014         5198
+ 2014         5199
+ 2014         5200
