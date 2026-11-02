@@ -1,0 +1,13 @@
+---
+title: Conceptual model with M-N resolved by the METER associative entity
+---
+erDiagram
+    SITE ||--|{ BUILDING : "contains"
+    SITE ||--o{ WEATHER_OBSERVATION : "records daily"
+    SPACE_USAGE |o--o{ SPACE_USAGE : "is parent of"
+    SPACE_USAGE ||--o{ BUILDING : "classifies"
+    BUILDING ||--|{ METER : "has"
+    UTILITY_TYPE ||--o{ METER : "is measured by"
+    METER ||--o{ DAILY_READING : "produces"
+    UTILITY_TYPE ||--o{ TARIFF_RATE : "is billed at"
+    MARKET_PRICE |o--o{ TARIFF_RATE : "is basis for"

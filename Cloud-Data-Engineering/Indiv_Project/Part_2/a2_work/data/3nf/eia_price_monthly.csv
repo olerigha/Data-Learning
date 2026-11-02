@@ -1,0 +1,4 @@
+eia_price_id,state_code,sector,price_month,price_cents_kwh,data_status
+1,TX,COMMERCIAL,2017-07-01,8.24,Final
+2,TX,COMMERCIAL,2017-08-01,8.17,Final
+3,TX,COMMERCIAL,2017-09-01,8.16,Final

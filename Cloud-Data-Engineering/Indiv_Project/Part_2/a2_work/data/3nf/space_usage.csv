@@ -1,0 +1,22 @@
+space_usage_id,usage_name,parent_usage_id
+1,Education,
+2,Entertainment/public assembly,
+3,Lodging/residential,
+4,Office,
+5,Public services,
+6,Services,
+7,Auditorium,1
+8,College Classroom,1
+9,College Laboratory,1
+10,Student Union,1
+11,Athletic Field,2
+12,Conference Center,2
+13,Gymnasium,2
+14,Museum,2
+15,Sports Stadium,2
+16,Swimming Pool,2
+17,Theater,2
+18,Dormitory,3
+19,Office,4
+20,Library,5
+21,Garage,6

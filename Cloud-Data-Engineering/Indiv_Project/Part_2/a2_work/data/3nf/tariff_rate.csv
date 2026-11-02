@@ -1,0 +1,10 @@
+tariff_rate_id,utility_type_id,rate_month,eia_price_id,unit_rate_usd,rate_basis
+1,1,2017-07-01,1,0.0206,ASSUMED: EIA TX price / COP 4.0
+2,2,2017-07-01,1,0.0824,EIA-861M TX commercial avg price
+3,3,2017-07-01,,0.034,ASSUMED: gas boiler $0.034/kWh
+4,1,2017-08-01,2,0.020425,ASSUMED: EIA TX price / COP 4.0
+5,2,2017-08-01,2,0.0817,EIA-861M TX commercial avg price
+6,3,2017-08-01,,0.034,ASSUMED: gas boiler $0.034/kWh
+7,1,2017-09-01,3,0.0204,ASSUMED: EIA TX price / COP 4.0
+8,2,2017-09-01,3,0.0816,EIA-861M TX commercial avg price
+9,3,2017-09-01,,0.034,ASSUMED: gas boiler $0.034/kWh

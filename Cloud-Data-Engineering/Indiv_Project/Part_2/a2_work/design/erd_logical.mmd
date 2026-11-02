@@ -1,0 +1,78 @@
+---
+title: Campus Energy Platform - Logical ER Model (MySQL 8.0, 3NF, 9 tables)
+---
+erDiagram
+    site ||--|{ building : "site_id"
+    site ||--o{ weather_daily : "site_id"
+    space_usage |o--o{ space_usage : "parent_usage_id (self)"
+    space_usage ||--o{ building : "space_usage_id"
+    building ||--|{ meter : "building_id"
+    utility_type ||--o{ meter : "utility_type_id"
+    meter ||--o{ daily_reading : "meter_id"
+    utility_type ||--o{ tariff_rate : "utility_type_id"
+    eia_price_monthly |o--o{ tariff_rate : "eia_price_id (nullable)"
+
+    site {
+        SMALLINT_UNSIGNED site_id PK "NOT NULL AUTO_INCREMENT"
+        VARCHAR_50 site_name UK "NOT NULL"
+        VARCHAR_40 timezone "NOT NULL"
+        DECIMAL_8_5 latitude "NULL"
+        DECIMAL_8_5 longitude "NULL"
+    }
+    space_usage {
+        SMALLINT_UNSIGNED space_usage_id PK "NOT NULL AUTO_INCREMENT"
+        VARCHAR_60 usage_name UK "NOT NULL; UK(parent_usage_id, usage_name)"
+        SMALLINT_UNSIGNED parent_usage_id FK "NULL = root"
+    }
+    building {
+        SMALLINT_UNSIGNED building_id PK "NOT NULL AUTO_INCREMENT"
+        VARCHAR_80 building_name UK "NOT NULL"
+        INT_UNSIGNED building_kaggle_id UK "NULL"
+        SMALLINT_UNSIGNED site_id FK "NOT NULL"
+        SMALLINT_UNSIGNED space_usage_id FK "NOT NULL"
+        DECIMAL_10_1 gross_sqm "NOT NULL CHECK > 0"
+    }
+    utility_type {
+        TINYINT_UNSIGNED utility_type_id PK "NOT NULL AUTO_INCREMENT"
+        VARCHAR_20 utility_code UK "NOT NULL"
+        VARCHAR_10 unit "NOT NULL"
+    }
+    meter {
+        SMALLINT_UNSIGNED meter_id PK "NOT NULL AUTO_INCREMENT"
+        SMALLINT_UNSIGNED building_id FK "NOT NULL; UK(building_id, utility_type_id)"
+        TINYINT_UNSIGNED utility_type_id FK "NOT NULL"
+        VARCHAR_100 meter_code UK "NOT NULL"
+    }
+    daily_reading {
+        SMALLINT_UNSIGNED meter_id PK,FK "NOT NULL"
+        DATE reading_date PK "NOT NULL"
+        DECIMAL_14_4 consumption_kwh "NULL iff hours_reported = 0"
+        DECIMAL_14_4 peak_hour_kwh "NULL"
+        TINYINT_UNSIGNED peak_hour "NULL, 0-23"
+        TINYINT_UNSIGNED hours_reported "NOT NULL, 0-24"
+    }
+    weather_daily {
+        SMALLINT_UNSIGNED site_id PK,FK "NOT NULL"
+        DATE weather_date PK "NOT NULL"
+        DECIMAL_7_4 avg_air_temp_c "NULL"
+        DECIMAL_7_4 max_air_temp_c "NULL"
+        DECIMAL_7_4 avg_dew_temp_c "NULL"
+        DECIMAL_8_2 total_precip_mm "NULL"
+        TINYINT_UNSIGNED hours_observed "NOT NULL, 0-24"
+    }
+    eia_price_monthly {
+        SMALLINT_UNSIGNED eia_price_id PK "NOT NULL AUTO_INCREMENT"
+        CHAR_2 state_code UK "NOT NULL; UK(state, sector, month)"
+        VARCHAR_20 sector UK "NOT NULL"
+        DATE price_month UK "NOT NULL, day = 1"
+        DECIMAL_6_2 price_cents_kwh "NOT NULL CHECK > 0"
+        VARCHAR_15 data_status "NOT NULL"
+    }
+    tariff_rate {
+        SMALLINT_UNSIGNED tariff_rate_id PK "NOT NULL AUTO_INCREMENT"
+        TINYINT_UNSIGNED utility_type_id FK "NOT NULL; UK(utility_type_id, rate_month)"
+        DATE rate_month "NOT NULL, day = 1"
+        SMALLINT_UNSIGNED eia_price_id FK "NULL (steam)"
+        DECIMAL_10_6 unit_rate_usd "NOT NULL CHECK > 0"
+        VARCHAR_100 rate_basis "NOT NULL"
+    }

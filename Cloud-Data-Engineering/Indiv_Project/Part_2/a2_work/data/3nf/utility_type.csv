@@ -1,0 +1,4 @@
+utility_type_id,utility_code,unit
+1,chilledwater,kWh
+2,electricity,kWh
+3,steam,kWh

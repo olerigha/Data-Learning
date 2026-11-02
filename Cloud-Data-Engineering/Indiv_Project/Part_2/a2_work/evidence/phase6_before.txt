@@ -1,0 +1,155 @@
+﻿server_version	run_at
+8.4.11	2026-11-02 02:23:47
+Table	Non_unique	Key_name	Seq_in_index	Column_name	Collation	Cardinality	Sub_part	Packed	Null	Index_type	Comment	Index_comment	Visible	Expression
+daily_reading	0	PRIMARY	1	meter_id	A	304	NULL	NULL		BTREE			YES	NULL
+daily_reading	0	PRIMARY	2	reading_date	A	27443	NULL	NULL		BTREE			YES	NULL
+daily_reading	1	idx_dr_meter_date_kwh	1	meter_id	A	308	NULL	NULL		BTREE			YES	NULL
+daily_reading	1	idx_dr_meter_date_kwh	2	reading_date	A	27443	NULL	NULL		BTREE			YES	NULL
+daily_reading	1	idx_dr_meter_date_kwh	3	consumption_kwh	A	27443	NULL	NULL	YES	BTREE			YES	NULL
+marker
+=== Q1 BEFORE run 1 ===
+EXPLAIN
+-> Limit: 10 row(s)  (actual time=43.4..43.4 rows=10 loops=1)
+    -> Sort: cost_per_sqm_usd DESC  (actual time=43.4..43.4 rows=10 loops=1)
+        -> Filter: (`sum(daily_reading.consumption_kwh)` > 0)  (actual time=32..43.3 rows=124 loops=1)
+            -> Stream results  (actual time=32..43.3 rows=124 loops=1)
+                -> Group aggregate: sum(daily_reading.consumption_kwh), sum(tmp_field), sum(tmp_field), sum(daily_reading.consumption_kwh), count(distinct meter.meter_id)  (actual time=32..43.1 rows=124 loops=1)
+                    -> Sort: b.building_id, b.building_name, parent.usage_name, su.usage_name, b.gross_sqm  (actual time=31.8..33.2 rows=9548 loops=1)
+                        -> Stream results  (cost=1078 rows=1030) (actual time=0.251..20.4 rows=9548 loops=1)
+                            -> Nested loop inner join  (cost=1078 rows=1030) (actual time=0.238..12.8 rows=9548 loops=1)
+                                -> Nested loop inner join  (cost=122 rows=103) (actual time=0.202..1.39 rows=308 loops=1)
+                                    -> Nested loop inner join  (cost=85.9 rows=103) (actual time=0.199..1.28 rows=308 loops=1)
+                                        -> Nested loop inner join  (cost=49.9 rows=103) (actual time=0.193..0.996 rows=308 loops=1)
+                                            -> Nested loop inner join  (cost=14 rows=103) (actual time=0.187..0.522 rows=308 loops=1)
+                                                -> Nested loop inner join  (cost=1.5 rows=1) (actual time=0.0382..0.0556 rows=3 loops=1)
+                                                    -> Filter: (tr.rate_month = DATE'2017-08-01')  (cost=1.15 rows=1) (actual time=0.0276..0.0356 rows=3 loops=1)
+                                                        -> Table scan on tr  (cost=1.15 rows=9) (actual time=0.0244..0.0304 rows=9 loops=1)
+                                                    -> Single-row covering index lookup on ut using PRIMARY (utility_type_id=tr.utility_type_id)  (cost=0.35 rows=1) (actual time=0.00599..0.00601 rows=1 loops=3)
+                                                -> Index lookup on m using fk_meter_utility (utility_type_id=tr.utility_type_id)  (cost=12.5 rows=103) (actual time=0.128..0.148 rows=103 loops=3)
+                                            -> Single-row index lookup on b using PRIMARY (building_id=m.building_id)  (cost=0.251 rows=1) (actual time=0.00136..0.00139 rows=1 loops=308)
+                                        -> Filter: (su.parent_usage_id is not null)  (cost=0.251 rows=1) (actual time=681e-6..758e-6 rows=1 loops=308)
+                                            -> Single-row index lookup on su using PRIMARY (space_usage_id=b.space_usage_id)  (cost=0.251 rows=1) (actual time=552e-6..576e-6 rows=1 loops=308)
+                                    -> Single-row index lookup on parent using PRIMARY (space_usage_id=su.parent_usage_id)  (cost=0.251 rows=1) (actual time=181e-6..206e-6 rows=1 loops=308)
+                                -> Filter: ((dr.reading_date >= DATE'2017-08-01') and (dr.reading_date < DATE'2017-09-01'))  (cost=0.295 rows=10) (actual time=0.0234..0.0351 rows=31 loops=308)
+                                    -> Index lookup on dr using PRIMARY (meter_id=m.meter_id)  (cost=0.295 rows=90.3) (actual time=0.0191..0.0266 rows=92 loops=308)
+
+marker
+=== Q1 BEFORE run 2 ===
+EXPLAIN
+-> Limit: 10 row(s)  (actual time=41.6..41.6 rows=10 loops=1)
+    -> Sort: cost_per_sqm_usd DESC  (actual time=41.6..41.6 rows=10 loops=1)
+        -> Filter: (`sum(daily_reading.consumption_kwh)` > 0)  (actual time=30.4..41.5 rows=124 loops=1)
+            -> Stream results  (actual time=30.4..41.4 rows=124 loops=1)
+                -> Group aggregate: sum(daily_reading.consumption_kwh), sum(tmp_field), sum(tmp_field), sum(daily_reading.consumption_kwh), count(distinct meter.meter_id)  (actual time=30.4..41.3 rows=124 loops=1)
+                    -> Sort: b.building_id, b.building_name, parent.usage_name, su.usage_name, b.gross_sqm  (actual time=30.3..31.6 rows=9548 loops=1)
+                        -> Stream results  (cost=1078 rows=1030) (actual time=0.204..20.4 rows=9548 loops=1)
+                            -> Nested loop inner join  (cost=1078 rows=1030) (actual time=0.197..12.7 rows=9548 loops=1)
+                                -> Nested loop inner join  (cost=122 rows=103) (actual time=0.168..1.35 rows=308 loops=1)
+                                    -> Nested loop inner join  (cost=85.9 rows=103) (actual time=0.166..1.24 rows=308 loops=1)
+                                        -> Nested loop inner join  (cost=49.9 rows=103) (actual time=0.161..0.955 rows=308 loops=1)
+                                            -> Nested loop inner join  (cost=14 rows=103) (actual time=0.157..0.495 rows=308 loops=1)
+                                                -> Nested loop inner join  (cost=1.5 rows=1) (actual time=0.0331..0.0497 rows=3 loops=1)
+                                                    -> Filter: (tr.rate_month = DATE'2017-08-01')  (cost=1.15 rows=1) (actual time=0.025..0.0325 rows=3 loops=1)
+                                                        -> Table scan on tr  (cost=1.15 rows=9) (actual time=0.0223..0.0275 rows=9 loops=1)
+                                                    -> Single-row covering index lookup on ut using PRIMARY (utility_type_id=tr.utility_type_id)  (cost=0.35 rows=1) (actual time=0.00506..0.00509 rows=1 loops=3)
+                                                -> Index lookup on m using fk_meter_utility (utility_type_id=tr.utility_type_id)  (cost=12.5 rows=103) (actual time=0.12..0.141 rows=103 loops=3)
+                                            -> Single-row index lookup on b using PRIMARY (building_id=m.building_id)  (cost=0.251 rows=1) (actual time=0.00133..0.00135 rows=1 loops=308)
+                                        -> Filter: (su.parent_usage_id is not null)  (cost=0.251 rows=1) (actual time=670e-6..745e-6 rows=1 loops=308)
+                                            -> Single-row index lookup on su using PRIMARY (space_usage_id=b.space_usage_id)  (cost=0.251 rows=1) (actual time=539e-6..563e-6 rows=1 loops=308)
+                                    -> Single-row index lookup on parent using PRIMARY (space_usage_id=su.parent_usage_id)  (cost=0.251 rows=1) (actual time=181e-6..207e-6 rows=1 loops=308)
+                                -> Filter: ((dr.reading_date >= DATE'2017-08-01') and (dr.reading_date < DATE'2017-09-01'))  (cost=0.295 rows=10) (actual time=0.0235..0.0348 rows=31 loops=308)
+                                    -> Index lookup on dr using PRIMARY (meter_id=m.meter_id)  (cost=0.295 rows=90.3) (actual time=0.0193..0.0267 rows=92 loops=308)
+
+marker
+=== Q1 BEFORE run 3 ===
+EXPLAIN
+-> Limit: 10 row(s)  (actual time=41..41 rows=10 loops=1)
+    -> Sort: cost_per_sqm_usd DESC  (actual time=41..41 rows=10 loops=1)
+        -> Filter: (`sum(daily_reading.consumption_kwh)` > 0)  (actual time=29.7..40.9 rows=124 loops=1)
+            -> Stream results  (actual time=29.7..40.9 rows=124 loops=1)
+                -> Group aggregate: sum(daily_reading.consumption_kwh), sum(tmp_field), sum(tmp_field), sum(daily_reading.consumption_kwh), count(distinct meter.meter_id)  (actual time=29.7..40.8 rows=124 loops=1)
+                    -> Sort: b.building_id, b.building_name, parent.usage_name, su.usage_name, b.gross_sqm  (actual time=29.6..30.9 rows=9548 loops=1)
+                        -> Stream results  (cost=1078 rows=1030) (actual time=0.205..20.3 rows=9548 loops=1)
+                            -> Nested loop inner join  (cost=1078 rows=1030) (actual time=0.199..12.6 rows=9548 loops=1)
+                                -> Nested loop inner join  (cost=122 rows=103) (actual time=0.169..1.35 rows=308 loops=1)
+                                    -> Nested loop inner join  (cost=85.9 rows=103) (actual time=0.167..1.24 rows=308 loops=1)
+                                        -> Nested loop inner join  (cost=49.9 rows=103) (actual time=0.162..0.962 rows=308 loops=1)
+                                            -> Nested loop inner join  (cost=14 rows=103) (actual time=0.157..0.516 rows=308 loops=1)
+                                                -> Nested loop inner join  (cost=1.5 rows=1) (actual time=0.0333..0.0521 rows=3 loops=1)
+                                                    -> Filter: (tr.rate_month = DATE'2017-08-01')  (cost=1.15 rows=1) (actual time=0.0248..0.0326 rows=3 loops=1)
+                                                        -> Table scan on tr  (cost=1.15 rows=9) (actual time=0.0218..0.0269 rows=9 loops=1)
+                                                    -> Single-row covering index lookup on ut using PRIMARY (utility_type_id=tr.utility_type_id)  (cost=0.35 rows=1) (actual time=0.00561..0.00564 rows=1 loops=3)
+                                                -> Index lookup on m using fk_meter_utility (utility_type_id=tr.utility_type_id)  (cost=12.5 rows=103) (actual time=0.126..0.147 rows=103 loops=3)
+                                            -> Single-row index lookup on b using PRIMARY (building_id=m.building_id)  (cost=0.251 rows=1) (actual time=0.00128..0.00131 rows=1 loops=308)
+                                        -> Filter: (su.parent_usage_id is not null)  (cost=0.251 rows=1) (actual time=656e-6..733e-6 rows=1 loops=308)
+                                            -> Single-row index lookup on su using PRIMARY (space_usage_id=b.space_usage_id)  (cost=0.251 rows=1) (actual time=531e-6..556e-6 rows=1 loops=308)
+                                    -> Single-row index lookup on parent using PRIMARY (space_usage_id=su.parent_usage_id)  (cost=0.251 rows=1) (actual time=180e-6..207e-6 rows=1 loops=308)
+                                -> Filter: ((dr.reading_date >= DATE'2017-08-01') and (dr.reading_date < DATE'2017-09-01'))  (cost=0.295 rows=10) (actual time=0.0232..0.0346 rows=31 loops=308)
+                                    -> Index lookup on dr using PRIMARY (meter_id=m.meter_id)  (cost=0.295 rows=90.3) (actual time=0.019..0.0263 rows=92 loops=308)
+
+marker
+=== Q5 BEFORE run 1 ===
+EXPLAIN
+-> Table scan on <temporary>  (cost=2.5..2.5 rows=0) (actual time=125..125 rows=22 loops=1)
+    -> Temporary table  (cost=0..0 rows=0) (actual time=125..125 rows=22 loops=1)
+        -> Group aggregate with rollup: sum(tmp_field), count(distinct building.building_id)  (actual time=95.9..125 rows=22 loops=1)
+            -> Sort: usage_name, usage_name  (actual time=95.7..98.6 rows=28336 loops=1)
+                -> Stream results  (cost=9012 rows=83412) (actual time=0.69..72.4 rows=28336 loops=1)
+                    -> Nested loop inner join  (cost=9012 rows=83412) (actual time=0.683..53.6 rows=28336 loops=1)
+                        -> Nested loop inner join  (cost=408 rows=924) (actual time=0.0486..1.92 rows=924 loops=1)
+                            -> Nested loop inner join  (cost=161 rows=308) (actual time=0.0384..0.543 rows=308 loops=1)
+                                -> Nested loop inner join  (cost=99.5 rows=124) (actual time=0.0336..0.246 rows=124 loops=1)
+                                    -> Nested loop inner join  (cost=56 rows=124) (actual time=0.0307..0.19 rows=124 loops=1)
+                                        -> Covering index scan on b using fk_building_usage  (cost=12.7 rows=124) (actual time=0.0208..0.0676 rows=124 loops=1)
+                                        -> Filter: (su.parent_usage_id is not null)  (cost=0.251 rows=1) (actual time=694e-6..797e-6 rows=1 loops=124)
+                                            -> Single-row index lookup on su using PRIMARY (space_usage_id=b.space_usage_id)  (cost=0.251 rows=1) (actual time=526e-6..553e-6 rows=1 loops=124)
+                                    -> Single-row index lookup on parent using PRIMARY (space_usage_id=su.parent_usage_id)  (cost=0.251 rows=1) (actual time=219e-6..263e-6 rows=1 loops=124)
+                                -> Covering index lookup on m using uq_meter_building_utility (building_id=b.building_id)  (cost=0.252 rows=2.48) (actual time=0.00153..0.00214 rows=2.48 loops=124)
+                            -> Index lookup on tr using uq_tariff_utility_month (utility_type_id=m.utility_type_id)  (cost=0.501 rows=3) (actual time=0.00361..0.00422 rows=3 loops=308)
+                        -> Filter: (tr.rate_month = cast(date_format(dr.reading_date,'%Y-%m-01') as date))  (cost=0.295 rows=90.3) (actual time=0.0305..0.0542 rows=30.7 loops=924)
+                            -> Index lookup on dr using PRIMARY (meter_id=m.meter_id)  (cost=0.295 rows=90.3) (actual time=0.0185..0.0262 rows=92 loops=924)
+
+marker
+=== Q5 BEFORE run 2 ===
+EXPLAIN
+-> Table scan on <temporary>  (cost=2.5..2.5 rows=0) (actual time=123..123 rows=22 loops=1)
+    -> Temporary table  (cost=0..0 rows=0) (actual time=123..123 rows=22 loops=1)
+        -> Group aggregate with rollup: sum(tmp_field), count(distinct building.building_id)  (actual time=95.1..123 rows=22 loops=1)
+            -> Sort: usage_name, usage_name  (actual time=95..97.7 rows=28336 loops=1)
+                -> Stream results  (cost=9012 rows=83412) (actual time=0.0942..71.2 rows=28336 loops=1)
+                    -> Nested loop inner join  (cost=9012 rows=83412) (actual time=0.0883..52.6 rows=28336 loops=1)
+                        -> Nested loop inner join  (cost=408 rows=924) (actual time=0.0529..1.93 rows=924 loops=1)
+                            -> Nested loop inner join  (cost=161 rows=308) (actual time=0.042..0.546 rows=308 loops=1)
+                                -> Nested loop inner join  (cost=99.5 rows=124) (actual time=0.0368..0.25 rows=124 loops=1)
+                                    -> Nested loop inner join  (cost=56 rows=124) (actual time=0.0338..0.194 rows=124 loops=1)
+                                        -> Covering index scan on b using fk_building_usage  (cost=12.7 rows=124) (actual time=0.023..0.0701 rows=124 loops=1)
+                                        -> Filter: (su.parent_usage_id is not null)  (cost=0.251 rows=1) (actual time=725e-6..821e-6 rows=1 loops=124)
+                                            -> Single-row index lookup on su using PRIMARY (space_usage_id=b.space_usage_id)  (cost=0.251 rows=1) (actual time=564e-6..589e-6 rows=1 loops=124)
+                                    -> Single-row index lookup on parent using PRIMARY (space_usage_id=su.parent_usage_id)  (cost=0.251 rows=1) (actual time=231e-6..272e-6 rows=1 loops=124)
+                                -> Covering index lookup on m using uq_meter_building_utility (building_id=b.building_id)  (cost=0.252 rows=2.48) (actual time=0.00154..0.00214 rows=2.48 loops=124)
+                            -> Index lookup on tr using uq_tariff_utility_month (utility_type_id=m.utility_type_id)  (cost=0.501 rows=3) (actual time=0.00358..0.00423 rows=3 loops=308)
+                        -> Filter: (tr.rate_month = cast(date_format(dr.reading_date,'%Y-%m-01') as date))  (cost=0.295 rows=90.3) (actual time=0.0296..0.0531 rows=30.7 loops=924)
+                            -> Index lookup on dr using PRIMARY (meter_id=m.meter_id)  (cost=0.295 rows=90.3) (actual time=0.0185..0.0262 rows=92 loops=924)
+
+marker
+=== Q5 BEFORE run 3 ===
+EXPLAIN
+-> Table scan on <temporary>  (cost=2.5..2.5 rows=0) (actual time=123..123 rows=22 loops=1)
+    -> Temporary table  (cost=0..0 rows=0) (actual time=123..123 rows=22 loops=1)
+        -> Group aggregate with rollup: sum(tmp_field), count(distinct building.building_id)  (actual time=94.8..123 rows=22 loops=1)
+            -> Sort: usage_name, usage_name  (actual time=94.6..97.3 rows=28336 loops=1)
+                -> Stream results  (cost=9012 rows=83412) (actual time=0.0865..71.1 rows=28336 loops=1)
+                    -> Nested loop inner join  (cost=9012 rows=83412) (actual time=0.0801..52.5 rows=28336 loops=1)
+                        -> Nested loop inner join  (cost=408 rows=924) (actual time=0.0489..1.88 rows=924 loops=1)
+                            -> Nested loop inner join  (cost=161 rows=308) (actual time=0.039..0.527 rows=308 loops=1)
+                                -> Nested loop inner join  (cost=99.5 rows=124) (actual time=0.034..0.237 rows=124 loops=1)
+                                    -> Nested loop inner join  (cost=56 rows=124) (actual time=0.0312..0.182 rows=124 loops=1)
+                                        -> Covering index scan on b using fk_building_usage  (cost=12.7 rows=124) (actual time=0.0205..0.0662 rows=124 loops=1)
+                                        -> Filter: (su.parent_usage_id is not null)  (cost=0.251 rows=1) (actual time=666e-6..762e-6 rows=1 loops=124)
+                                            -> Single-row index lookup on su using PRIMARY (space_usage_id=b.space_usage_id)  (cost=0.251 rows=1) (actual time=517e-6..542e-6 rows=1 loops=124)
+                                    -> Single-row index lookup on parent using PRIMARY (space_usage_id=su.parent_usage_id)  (cost=0.251 rows=1) (actual time=224e-6..267e-6 rows=1 loops=124)
+                                -> Covering index lookup on m using uq_meter_building_utility (building_id=b.building_id)  (cost=0.252 rows=2.48) (actual time=0.00151..0.0021 rows=2.48 loops=124)
+                            -> Index lookup on tr using uq_tariff_utility_month (utility_type_id=m.utility_type_id)  (cost=0.501 rows=3) (actual time=0.00356..0.00416 rows=3 loops=308)
+                        -> Filter: (tr.rate_month = cast(date_format(dr.reading_date,'%Y-%m-01') as date))  (cost=0.295 rows=90.3) (actual time=0.0297..0.0531 rows=30.7 loops=924)
+                            -> Index lookup on dr using PRIMARY (meter_id=m.meter_id)  (cost=0.295 rows=90.3) (actual time=0.0184..0.0261 rows=92 loops=924)
+
