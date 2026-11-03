@@ -1028,6 +1028,10 @@
           <aggregation value='true' />
         </view>
         <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.cmdw0relationships01].[Longitude (generated)]' field-type='quantitative' max='20200000' min='-14500000' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.cmdw0relationships01].[Latitude (generated)]' field-type='quantitative' max='11600000' min='-6600000' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
           <style-rule element='map'>
             <format attr='washout' value='0.0' />
           </style-rule>
@@ -1089,6 +1093,12 @@
           <aggregation value='true' />
         </view>
         <style>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.cmdw0relationships01].[none:productVendor:nk]' value='190' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
         </style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
@@ -1103,7 +1113,7 @@
             <style>
               <style-rule element='mark'>
                 <format attr='mark-labels-show' value='true' />
-                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-cull' value='false' />
               </style-rule>
             </style>
           </pane>
@@ -1155,7 +1165,7 @@
             </encodings>
             <style>
               <style-rule element='mark'>
-                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-show' value='false' />
                 <format attr='mark-labels-cull' value='true' />
               </style-rule>
             </style>
@@ -1170,7 +1180,7 @@
   <dashboards>
     <dashboard name='Classic Models Sales Dashboard'>
       <style />
-      <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' sizing-mode='fixed' />
+      <size maxheight='1000' maxwidth='1600' minheight='1000' minwidth='1600' sizing-mode='fixed' />
       <datasources />
       <zones>
         <zone h='100000' id='1' type-v2='layout-basic' w='100000' x='0' y='0'>
@@ -1181,7 +1191,10 @@
               <zone h='43889' id='6' name='Sales by Country' w='55000' x='0' y='12223' />
               <zone h='43889' id='7' name='Sales by Vendor' w='45000' x='55000' y='12223' />
             </zone>
-            <zone h='43888' id='8' name='Sales Trend by Product Line' w='100000' x='0' y='56112' />
+            <zone h='43888' id='9' param='horz' type-v2='layout-flow' w='100000' x='0' y='56112'>
+              <zone h='43888' id='8' name='Sales Trend by Product Line' w='86000' x='0' y='56112' />
+              <zone h='43888' id='10' name='Sales Trend by Product Line' pane-specification-id='0' param='[federated.cmdw0relationships01].[none:productLine:nk]' type-v2='color' w='14000' x='86000' y='56112' />
+            </zone>
           </zone>
         </zone>
       </zones>
