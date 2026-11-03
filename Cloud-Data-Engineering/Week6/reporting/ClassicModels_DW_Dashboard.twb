@@ -1019,7 +1019,7 @@
             <column-instance column='[country]' derivation='None' name='[none:country:nk]' pivot='key' type='nominal' />
             <column-instance column='[productLine]' derivation='None' name='[none:productLine:nk]' pivot='key' type='nominal' />
           </datasource-dependencies>
-          <filter class='categorical' column='[federated.cmdw0relationships01].[none:productLine:nk]' filter-group='2'>
+          <filter class='categorical' column='[federated.cmdw0relationships01].[none:productLine:nk]'>
             <groupfilter function='level-members' level='[none:productLine:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <slices>
@@ -1079,7 +1079,7 @@
             <column-instance column='[productLine]' derivation='None' name='[none:productLine:nk]' pivot='key' type='nominal' />
             <column-instance column='[productVendor]' derivation='None' name='[none:productVendor:nk]' pivot='key' type='nominal' />
           </datasource-dependencies>
-          <filter class='categorical' column='[federated.cmdw0relationships01].[none:productLine:nk]' filter-group='2'>
+          <filter class='categorical' column='[federated.cmdw0relationships01].[none:productLine:nk]'>
             <groupfilter function='level-members' level='[none:productLine:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <computed-sort column='[federated.cmdw0relationships01].[none:productVendor:nk]' direction='DESC' using='[federated.cmdw0relationships01].[sum:lineTotal:qk]' />
@@ -1134,7 +1134,7 @@
             <column-instance column='[productLine]' derivation='None' name='[none:productLine:nk]' pivot='key' type='nominal' />
             <column-instance column='[date]' derivation='Month-Trunc' name='[tmn:date:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
-          <filter class='categorical' column='[federated.cmdw0relationships01].[none:productLine:nk]' filter-group='2'>
+          <filter class='categorical' column='[federated.cmdw0relationships01].[none:productLine:nk]'>
             <groupfilter function='level-members' level='[none:productLine:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <slices>
