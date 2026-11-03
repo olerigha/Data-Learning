@@ -1,0 +1,212 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Week 2 - API Gateway + Lambda -> RDS (classicmodels)
+
+# --------------------------------------------------------------------------- #
+# Parameters – override at deploy time:                                        #
+#   sam deploy --parameter-overrides DBHost=<rds-endpoint> DBUser=admin ...   #
+# --------------------------------------------------------------------------- #
+Parameters:
+  DBHost:
+    Type: String
+    Description: RDS endpoint hostname
+  DBPort:
+    Type: String
+    Default: "3306"
+  DBName:
+    Type: String
+    Default: classicmodels
+  DBUser:
+    Type: String
+    Description: RDS master username
+  DBPassword:
+    Type: String
+    NoEcho: true
+    Description: RDS master password
+  RawBucketName:
+    Type: String
+    Description: S3 bucket that stores the raw dataset previewed by /objects/{key}
+  SubnetIds:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: Private subnets in the same VPC as RDS (at least two AZs)
+  LambdaSecurityGroupId:
+    Type: AWS::EC2::SecurityGroup::Id
+    Description: Security group id for the Lambda function
+
+Globals:
+  Function:
+    Runtime: python3.11
+    Timeout: 15
+    MemorySize: 256
+    Environment:
+      Variables:
+        DB_HOST:
+          Ref: DBHost
+        DB_PORT:
+          Ref: DBPort
+        DB_NAME:
+          Ref: DBName
+        DB_USER:
+          Ref: DBUser
+        DB_PASSWORD:
+          Ref: DBPassword
+        RAW_BUCKET:
+          Ref: RawBucketName
+
+Resources:
+
+  # -----------------------------------------------------------------------
+  # Lambda function
+  # -----------------------------------------------------------------------
+  ClassicModelsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: classicmodels-api
+      CodeUri: lambda/
+      Handler: lambda_function.lambda_handler
+      Description: Query classicmodels RDS and expose via API Gateway
+      VpcConfig:
+        SecurityGroupIds:
+          - Ref: LambdaSecurityGroupId
+        SubnetIds:
+          Ref: SubnetIds
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - s3:GetObject
+              Resource:
+                Fn::Sub: "arn:aws:s3:::${RawBucketName}/*"
+      Events:
+        # Summary
+        Summary:
+          Type: HttpApi
+          Properties:
+            Path: /summary
+            Method: GET
+            ApiId:
+              Ref: ClassicModelsApi
+        # Customers
+        Customers:
+          Type: HttpApi
+          Properties:
+            Path: /customers
+            Method: GET
+            ApiId:
+              Ref: ClassicModelsApi
+        CustomerById:
+          Type: HttpApi
+          Properties:
+            Path: /customers/{id}
+            Method: GET
+            ApiId:
+              Ref: ClassicModelsApi
+        # Products
+        Products:
+          Type: HttpApi
+          Properties:
+            Path: /products
+            Method: GET
+            ApiId:
+              Ref: ClassicModelsApi
+        ProductById:
+          Type: HttpApi
+          Properties:
+            Path: /products/{id}
+            Method: GET
+            ApiId:
+              Ref: ClassicModelsApi
+        # Orders
+        Orders:
+          Type: HttpApi
+          Properties:
+            Path: /orders
+            Method: GET
+            ApiId:
+              Ref: ClassicModelsApi
+        OrderById:
+          Type: HttpApi
+          Properties:
+            Path: /orders/{id}
+            Method: GET
+            ApiId:
+              Ref: ClassicModelsApi
+        # Employees
+        Employees:
+          Type: HttpApi
+          Properties:
+            Path: /employees
+            Method: GET
+            ApiId:
+              Ref: ClassicModelsApi
+        EmployeeById:
+          Type: HttpApi
+          Properties:
+            Path: /employees/{id}
+            Method: GET
+            ApiId:
+              Ref: ClassicModelsApi
+        ObjectPreview:
+          Type: HttpApi
+          Properties:
+            Path: /objects/{key}
+            Method: GET
+            ApiId:
+              Ref: ClassicModelsApi
+
+  # -----------------------------------------------------------------------
+  # HTTP API Gateway (API Gateway v2)
+  # -----------------------------------------------------------------------
+  ClassicModelsApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: prod
+      CorsConfiguration:
+        AllowOrigins:
+          - "*"
+        AllowHeaders:
+          - Content-Type
+        AllowMethods:
+          - GET
+          - OPTIONS
+
+  # -----------------------------------------------------------------------
+  # Optional: RDS MySQL (comment out if you already have one)
+  # -----------------------------------------------------------------------
+  # ClassicModelsDB:
+  #   Type: AWS::RDS::DBInstance
+  #   Properties:
+  #     DBInstanceIdentifier: classicmodels-db
+  #     DBInstanceClass: db.t3.micro
+  #     Engine: MySQL
+  #     EngineVersion: "8.0"
+  #     MasterUsername: !Ref DBUser
+  #     MasterUserPassword: !Ref DBPassword
+  #     DBName: !Ref DBName
+  #     AllocatedStorage: "20"
+  #     VPCSecurityGroups:
+  #       - !Ref LambdaSecurityGroupId
+  #     DBSubnetGroupName: !Ref DBSubnetGroup
+  #     MultiAZ: false
+  #     PubliclyAccessible: false
+  #     StorageType: gp2
+  #   DeletionPolicy: Snapshot
+  #
+  # DBSubnetGroup:
+  #   Type: AWS::RDS::DBSubnetGroup
+  #   Properties:
+  #     DBSubnetGroupDescription: Subnet group for classicmodels RDS
+  #     SubnetIds: !Ref SubnetIds
+
+Outputs:
+  ApiEndpoint:
+    Description: API Gateway base URL
+    Value:
+      Fn::Sub: "https://${ClassicModelsApi}.execute-api.${AWS::Region}.amazonaws.com/prod"
+  LambdaArn:
+    Description: Lambda function ARN
+    Value:
+      Fn::GetAtt:
+        - ClassicModelsFunction
+        - Arn

@@ -1,0 +1,26 @@
+# Classic Models Application Configuration
+# Environment variables can override default values using ${VAR:-default}
+
+database:
+  dialect: "mysql"
+  driver: "mysqlconnector"
+  host: "${DB_HOST:-localhost}"
+  port: 3306
+  user: "${DB_USER:-root}"
+  password: "${DB_PASSWORD:-}"
+  database: "${DB_NAME:-classicmodels}"
+  charset: "utf8"
+  pool_recycle: 3600
+
+api:
+  host: "${API_HOST:-127.0.0.1}"
+  port: 8000
+  base_url: "${API_BASE_URL:-http://127.0.0.1:8000}"
+  title: "Classic Models API"
+  version: "1.0.0"
+
+app:
+  title: "Classic Models Customer Data Application"
+  page_title: "Classic Models Customer App"
+  layout: "wide"
+
