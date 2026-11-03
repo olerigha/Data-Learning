@@ -1082,7 +1082,7 @@
           <filter class='categorical' column='[federated.cmdw0relationships01].[none:productLine:nk]' filter-group='2'>
             <groupfilter function='level-members' level='[none:productLine:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
-          <sort class='computed' column='[federated.cmdw0relationships01].[none:productVendor:nk]' direction='DESC' using='[federated.cmdw0relationships01].[sum:lineTotal:qk]' />
+          <computed-sort column='[federated.cmdw0relationships01].[none:productVendor:nk]' direction='DESC' using='[federated.cmdw0relationships01].[sum:lineTotal:qk]' />
           <slices>
             <column>[federated.cmdw0relationships01].[none:productLine:nk]</column>
           </slices>
