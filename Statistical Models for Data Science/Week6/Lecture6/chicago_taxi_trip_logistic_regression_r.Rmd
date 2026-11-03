@@ -1,0 +1,72 @@
+---
+title: 'Chicago Taxi Trips in Year 2022'
+author: 'Copyright © 2026 Danny Ng'
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = '') # results = 'hold'
+```
+
+***
+
+# Read the Data
+
+```{r}
+data <- read.csv('chicago_taxi_trip_sample.csv')
+
+dim(data)
+```
+
+# Logistic Regression
+
+```{r}
+# Construct binary response variable y
+data$tips_5 <- data$tips >= 5
+
+str(data)
+```
+
+```{r}
+model <- glm(tips_5 ~ fare, family = binomial, data = data)
+
+summary(model)
+```
+
+# Model Selection
+
+```{r}
+# Do feature engineering
+data$airport <- (data$pickup_area %in% c('Midway', 'O\'Hare') |
+                 data$dropoff_area %in% c('Midway', 'O\'Hare'))
+
+# Fit small model
+small.model <- glm(tips_5 ~ fare + airport, family = binomial, data = data)
+
+# Fit large model with interaction term
+large.model <- glm(tips_5 ~ fare * airport, family = binomial, data = data)
+```
+
+## Wald $z$-test
+
+```{r}
+# Wald z-test to select explanatory variable
+summary(large.model)
+```
+
+## $\mathcal{X}^2$ likelihood ratio test LRT
+
+```{r}
+# X^2 likelihood ratio test LRT to select model
+anova(small.model, large.model)
+```
+
+## AIC
+
+```{r}
+# AIC to select model
+c(AIC(small.model), AIC(large.model))
+```
