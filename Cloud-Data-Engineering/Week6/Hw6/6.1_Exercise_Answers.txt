@@ -1,0 +1,27 @@
+Classic Models Dashboard - Answers
+
+Total sales: $9,604,191 (2,996 order lines)
+
+1. Which three countries have the highest sales?
+   
+USA ($3,273,280, 34.1%), Spain ($1,099,389, 11.4%), France ($1,007,374, 10.5%).
+   
+What it means: The US alone brings in about a third of revenue and the top three bring in 56%, so the business depends heavily on a few markets. The US relationship is critical, and markets outside the top three are room to grow.
+
+
+
+2. Which vendor has the highest sales, and does that change if you filter to Classic Cars?
+   
+Classic Metal Creations ($934,554). No, it is still #1 when filtered to Classic Cars ($702,577), followed by Gearbox Collectibles ($539,935). Unimax Art Galleries, #2 overall, drops out of the top three.
+
+What it means: About 75% of Classic Metal Creations' sales come from Classic Cars, so it is our most important supplier to protect. It is also a concentration risk if that line slows down.
+
+
+
+3. Which product line has the highest sales, and what notable pattern do you see in its trend over time?
+
+Classic Cars ($3,853,922, 40.1% of sales), about double the next line, Vintage Cars ($1,797,560).
+
+Pattern: Sales spike every October-November, reaching about $404K in Nov 2014 and $416K in Nov 2016, roughly 2-3x a normal month. All product lines follow the same seasonal shape. 2015 only has data for Jan-May, so the flat line through late 2015 is a gap in the data, not a drop in sales.
+   
+What it means: Demand peaks before the holidays, so Classic Cars inventory and marketing should ramp up by early fall.
