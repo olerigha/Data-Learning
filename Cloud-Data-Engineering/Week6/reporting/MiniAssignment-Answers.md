@@ -4,13 +4,13 @@
 
 Table names in the local DW script (`Week5/warehouse/classicmodelsdw.sql`) are different from the handout. Use whichever names your server actually shows:
 
-| Handout name | Local DW script name | Relate on |
-|---|---|---|
-| `fact_sales_order_line` | `factOrderDetails` | (base table) |
-| `dim_customer` | `dimCustomers` | `customerKey = customerKey` |
-| `dim_product` | `dimProducts` | `productKey = productKey` |
-| `dim_date` | `dimtime` | `orderDateId = dateId` |
-| extended sales amount | `lineTotal` | (measure, = quantityOrdered × priceEach) |
+| Handout name              | Local DW script name | Relate on                                 |
+| ------------------------- | -------------------- | ----------------------------------------- |
+| `fact_sales_order_line` | `factOrderDetails` | (base table)                              |
+| `dim_customer`          | `dimCustomers`     | `customerKey = customerKey`             |
+| `dim_product`           | `dimProducts`      | `productKey = productKey`               |
+| `dim_date`              | `dimtime`          | `orderDateId = dateId`                  |
+| extended sales amount     | `lineTotal`        | (measure, = quantityOrdered × priceEach) |
 
 1. **Connect:** Connect → To a Server → MySQL → enter the host, port, username and password → Database `classicmodels_dw` (or `classicmodelsdw`).
 2. **Model:** drag the fact table onto the canvas. Drag each dimension next to it so it makes a relationship ("noodle"), not a join. Set each clause to the surrogate key shown above.
