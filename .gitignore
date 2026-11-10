@@ -3,3 +3,9 @@ Cloud-Data-Engineering/Indiv_Project/Dataset/
 
 # Windows Explorer folder settings
 desktop.ini
+
+# Private study material: its own private GitHub repo (in-class notes, coach notes, coach data)
+Study/Private/
+
+# Obsidian per-device settings
+.obsidian/
