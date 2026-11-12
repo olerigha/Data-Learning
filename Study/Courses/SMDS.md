@@ -36,7 +36,7 @@ Source: [[L5_ADSP 31014 Statistical Models for Data Science.pdf]] §6
 - [[Grouped vs Ungrouped Data]] · [[Deviance and Goodness of Fit]] · [[Wald Test and Likelihood Ratio Test]]
 
 ### Week 6 — Logistic regression in practice (Chicago taxi tips)
-Source: [[chicago_taxi_trip_logistic_regression_python.ipynb]], [[chicago_taxi_trip_logistic_regression_r.Rmd]]
+Source: [[chicago_taxi_trip_logistic_regression_python.ipynb]],[[chicago_taxi_trip_logistic_regression_r.Rmd]]
 - [[Class Imbalance]] · [[Empirical Logit Plot]] · [[Fitting Logistic Regression in Python and R]] · [[Chicago Taxi Tips Case Study]]
 
 ## Threads across weeks

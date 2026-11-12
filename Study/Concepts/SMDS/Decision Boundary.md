@@ -8,6 +8,10 @@ tags: [generated]
 # Decision Boundary
 **In one line:** The line (or flat surface) that splits "predict yes" from "predict no"; for logistic regression it's always straight.
 
+Flying Carpet Example:
+
+Tau is the threshold
+
 **In plain words:** Saying "the probability is above the cutoff" is the same as saying "the straight-line part is above some number". So the border between yes and no is a straight line with two inputs, a flat plane with three, and so on. That's why logistic regression is called a *linear* classifier.
 
 **Symbols**
