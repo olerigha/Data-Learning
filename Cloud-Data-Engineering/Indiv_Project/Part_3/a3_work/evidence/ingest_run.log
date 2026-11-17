@@ -1,0 +1,9 @@
+2026-11-16 13:54:10,250 INFO eia_ercot_hourly_demand page 0 offset 0 -> 500 rows (total reported 2208)
+2026-11-16 13:54:12,225 INFO eia_ercot_hourly_demand page 1 offset 500 -> 500 rows (total reported 2208)
+2026-11-16 13:54:13,373 INFO eia_ercot_hourly_demand page 2 offset 1000 -> 500 rows (total reported 2208)
+2026-11-16 13:54:14,593 INFO eia_ercot_hourly_demand page 3 offset 1500 -> 500 rows (total reported 2208)
+2026-11-16 13:54:15,775 INFO eia_ercot_hourly_demand page 4 offset 2000 -> 208 rows (total reported 2208)
+2026-11-16 13:54:16,017 INFO eia_tx_commercial_retail_monthly page 0 offset 0 -> 116 rows (total reported 116)
+2026-11-16 13:54:16,024 INFO SUMMARY eia_ercot_hourly_demand: 2208 rows in 5 pages (API total 2208)
+2026-11-16 13:54:16,024 INFO SUMMARY eia_tx_commercial_retail_monthly: 116 rows in 1 pages (API total 116)
+2026-11-16 13:54:16,024 INFO SUMMARY all sources: 2324 records

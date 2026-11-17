@@ -1,0 +1,55 @@
+{
+  "source_name": "eia_ercot_hourly_demand",
+  "endpoint": "https://api.eia.gov/v2/electricity/rto/region-data/data/",
+  "params": {
+    "frequency": "hourly",
+    "data[0]": "value",
+    "facets[respondent][]": "ERCO",
+    "facets[type][]": "D",
+    "start": "2025-07-01T05",
+    "end": "2025-10-01T04",
+    "sort[0][column]": "period",
+    "sort[0][direction]": "asc"
+  },
+  "page_size": 500,
+  "pages": [
+    {
+      "page": 0,
+      "offset": 0,
+      "rows": 500,
+      "http_status": 200,
+      "file": "page_0000.json"
+    },
+    {
+      "page": 1,
+      "offset": 500,
+      "rows": 500,
+      "http_status": 200,
+      "file": "page_0001.json"
+    },
+    {
+      "page": 2,
+      "offset": 1000,
+      "rows": 500,
+      "http_status": 200,
+      "file": "page_0002.json"
+    },
+    {
+      "page": 3,
+      "offset": 1500,
+      "rows": 500,
+      "http_status": 200,
+      "file": "page_0003.json"
+    },
+    {
+      "page": 4,
+      "offset": 2000,
+      "rows": 208,
+      "http_status": 200,
+      "file": "page_0004.json"
+    }
+  ],
+  "rows_total": 2208,
+  "total_reported": 2208,
+  "ingested_at": "2026-11-16T19:54:15+00:00"
+}

@@ -1,0 +1,27 @@
+{
+  "source_name": "eia_tx_commercial_retail_monthly",
+  "endpoint": "https://api.eia.gov/v2/electricity/retail-sales/data/",
+  "params": {
+    "frequency": "monthly",
+    "data[0]": "price",
+    "data[1]": "sales",
+    "facets[stateid][]": "TX",
+    "facets[sectorid][]": "COM",
+    "start": "2017-01",
+    "sort[0][column]": "period",
+    "sort[0][direction]": "asc"
+  },
+  "page_size": 500,
+  "pages": [
+    {
+      "page": 0,
+      "offset": 0,
+      "rows": 116,
+      "http_status": 200,
+      "file": "page_0000.json"
+    }
+  ],
+  "rows_total": 116,
+  "total_reported": 116,
+  "ingested_at": "2026-11-16T19:54:16+00:00"
+}
