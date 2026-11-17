@@ -43,8 +43,21 @@ Source: [[Week6-BusinessIntelligence.pdf]], [[governance-lab]], [[observability-
 - [[BI vs Standard Reporting]] · [[KPIs and the Semantic Layer]] · [[Dashboard Design Principles]]
 - [[Three-Tier Data Apps]]
 
+### Week 7 — NoSQL: document, key-value and graph
+Source: [[Week7-NoSQL.pdf]], [[Cloud-Data-Engineering/Week7/README|Week 7 README]]; labs in `Week7/dynamodb`, `mongodb`, `neo4j`
+- [[NoSQL and the CAP Theorem]] · [[Polyglot Persistence]]
+- [[Key-Value and Wide-Column Stores]] · [[DynamoDB Key Design]] · [[Document Databases]] · [[Graph Databases and Cypher]]
+
+### Week 8 — Parallel and distributed computing with Spark
+Source: [[Week8-ParallelDistributed.pdf]], [[Cloud-Data-Engineering/Week8/Week8/README|Week 8 README]], [[Dataproc_JupyterLab_Setup_Guide_Reusable]]
+- [[Distributed Computing and Amdahl's Law]] · [[MapReduce, Spark, Dask and Ray]]
+- [[Spark Architecture]] · [[RDDs, Lazy Evaluation and DAGs]] · [[Partitions and Shuffles]] · [[Spark DataFrames and SQL]]
+- [[Spark Performance Best Practices]] · [[Google Cloud Dataproc]]
+
 ## Threads across weeks
 - **Data path:** [[Object Storage]] → [[Medallion Architecture]] → [[Fact and Dimension Tables]] → [[Dashboard Design Principles]]
 - **Writes vs reads:** [[Normalization]] (OLTP) ↔ [[Star vs Snowflake Schema]] (OLAP), see [[OLTP vs OLAP]]
 - **Reliable pipelines:** [[ACID Transactions]] + [[Idempotent Pipelines]] + [[Pipeline Orchestration with Prefect]] + [[Data Observability]]
+- **Choosing storage:** [[Database Management System]] (relational) ↔ [[Polyglot Persistence]] (NoSQL) ↔ [[Data Lakehouse]] (analytics)
+- **Scaling compute:** [[Cloud Economics and Elasticity]] → [[Distributed Computing and Amdahl's Law]] → [[Spark Architecture]]
 - **Communication (with LCDS):** [[Dashboard Design Principles]] ↔ [[Chart Selection]]
